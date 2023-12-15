@@ -47,41 +47,112 @@ if (isset($_POST['submit_delete'])) {
             </ul>
         </div>
 
-        <table class="wp-list-table widefat fixed striped">
-            <thead>
-                <tr>
-                    <th><input type="checkbox" id="select-all"></th>
-                    <th>ID</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Category</th>
-                    <th>Service</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="scroll">
+            <table class="wp-list-table  fixed striped">
+                <thead>
+                    <tr>
+                        <th class='select'><input type="checkbox" id="select-all"></th>
+                        <th class='id'>ID</th>
+                        <th class='small'>Edit</th>
+                        <th class='small'>Mail</th>
+                        <th class='small'>SMS</th>
+                        <th class=''>Papers</th>
+                        <th class='small'>Bill</th>
+                        <th class='medium'>Type</th>
+                        <th>Image</th>
+                        <th>Since</th>
+                        <th>Gender</th>
+                        <th>DOB</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Service</th>
+                        <th>Company</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                        <th>Phone Work</th>
+                        <th>Phone Mobile</th>
+                        <th>Email</th>
+                        <th>Web</th>
+                        <th>Slogan</th>
 
-                <?php foreach ($contacts as $contact) : ?>
-                <tr>
-                    <td><input type="checkbox" class="delete-checkbox" name="delete_contact_ids[]"
-                            value="<?php echo esc_attr($contact['id']); ?>"></td>
-                    <td><?php echo esc_html($contact['id']); ?></td>
-                    <td>
-                        <a href="<?php echo admin_url('admin.php?page=edit-contact&contact_id=' . $contact['id']); ?>">
-                            Edit
-                        </a>
-                    </td>
-                    <td></td>
-                    <td><?php echo esc_html($contact['first_name']); ?></td>
-                    <td><?php echo esc_html($contact['last_name']); ?></td>
-                    <td><?php echo esc_html($contact['category']); ?></td>
-                    <td><?php echo esc_html($contact['service']); ?></td>
-                </tr>
-                <?php endforeach; ?>
+                    </tr>
+                </thead>
+                <tbody>
 
-            </tbody>
-        </table>
+                    <?php foreach ($contacts as $contact) : ?>
+                    <tr>
+                        <td class='select'><input type="checkbox" class="delete-checkbox" name="delete_contact_ids[]"
+                                value="<?php echo esc_attr($contact['id']); ?>"></td>
+                        <td class='id'><?php echo esc_html($contact['id']); ?></td>
+                        <td>
+                            <a class='button edit-btn'
+                                href="<?php echo admin_url('admin.php?page=edit-contact&contact_id=' . $contact['id']); ?>">
+                                <span class="iconify color-orange" data-icon="material-symbols:edit-sharp"
+                                    data-inline="false"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a class='button' href="">
+                                <span class="iconify" data-icon="material-symbols:outgoing-mail"
+                                    data-inline="false"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a class='button' href="">
+                                <span class="iconify" data-icon="logos:whatsapp-icon" data-inline="false"></span>
+                            </a>
+
+                        </td>
+                        <td>
+                            <a class='button' href="">
+                                <span class="iconify color-yellow" data-icon="material-symbols:folder-open-rounded"
+                                    data-inline="false"></span>
+                            </a>
+
+
+
+                        </td>
+                        <td>
+                            <a class='button' href="">
+                                <span class="iconify color-gray" data-icon="ic:baseline-circle"
+                                    data-inline="false"></span>
+                            </a>
+
+
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a class='button' href="">
+                                <span class="iconify color-blue" data-icon="ic:baseline-circle"
+                                    data-inline="false"></span>
+                            </a>
+                        </td>
+                        <td></td>
+                        <td><?php echo esc_html($contact['first_name']); ?></td>
+                        <td><?php echo esc_html($contact['last_name']); ?></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><?php echo esc_html($contact['service']); ?></td>
+                        <td><?php echo esc_html($contact['category']); ?></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <?php endforeach; ?>
+
+                </tbody>
+            </table>
+        </div>
 
         <?php
         // Pagination
