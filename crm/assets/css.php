@@ -103,9 +103,15 @@
 
     /* CONTAINER */
 
-    #block-container {
+    .contents {
         padding: 8px;
+        background-color: #fff;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
     }
+
 
     /* TABS */
 
@@ -297,11 +303,65 @@
             opacity: 0.6;
         }
     }
-}
 
-.contents {
-    padding: 8px;
-    background-color: #fff;
-    border-radius: 8px
+    /* add new Contact */
+    .add-edit-contact {
+        max-width: 1220px;
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .fields {
+            display: grid;
+            column-gap: 30px;
+            row-gap: 6px;
+            grid-template-columns: repeat(auto-fit, minmax(min(225px, 100%), 1fr));
+
+        }
+
+        .field {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            label {
+                white-space: nowrap;
+                display: flex;
+                width: 100%;
+                text-align: right;
+                justify-content: end;
+
+            }
+
+            input {
+                border: solid 1px #b5b8c8;
+                border-radius: 0;
+                width: 100%;
+
+            }
+        }
+
+        .large {
+            grid-column: span 4 / span 4;
+        }
+
+        .textarea {
+            textarea {
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            svg {
+                font-size: 20px;
+            }
+        }
+    }
 }
 </style>

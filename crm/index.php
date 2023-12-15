@@ -8,7 +8,10 @@ Author: Larico for PlatformBuilder.
 
   
 
-require_once plugin_dir_path(__FILE__) . 'inc/db.php';
+register_activation_hook(__FILE__, 'crm_plugin_activate');
+function crm_plugin_activate() {
+    require_once('inc/db.php');
+}
 
   
 add_action('admin_menu', 'crm_plugin_menu');
@@ -39,33 +42,40 @@ function crm_plugin_menu() {
         'new-contact',
         'new_contact_page'
     );
-    add_submenu_page(
-        'crm-overview',
-        'Edit Contact',
-        'Edit Contact',
-        'manage_options',
-        'edit-contact',
-        'edit_contact_page'
-    );
+ 
+   
 
     add_submenu_page(
         'crm-overview',
-        'Settings',
-        'Settings',
+        'CRM Settings',
+        'CRM Settings',
         'manage_options',
-        'settings',
-        'settings_page'
+        'crm-settings',
+        'crm_settings_page'
+    );
+
+     
+    add_submenu_page(
+        'crm-overview',
+        '',
+        '',
+        'manage_options',
+        'edit-contact',
+        'edit_contact_page',
+        15
     );
 
    
 }
+
+ 
 
 
 require_once plugin_dir_path(__FILE__) . 'inc/assets.php';
  
 require_once plugin_dir_path(__FILE__) . 'inc/overview.php';
 
-require_once plugin_dir_path(__FILE__) . 'inc/settings.php';
+require_once plugin_dir_path(__FILE__) . 'inc/crm-settings.php';
 
 
  
@@ -77,3 +87,9 @@ function new_contact_page() {
 function edit_contact_page() { 
     require_once plugin_dir_path(__FILE__) . 'inc/contacts/edit.php';
 }
+
+
+
+
+
+ 

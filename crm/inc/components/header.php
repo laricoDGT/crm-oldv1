@@ -18,10 +18,10 @@
         <div class="options">
             <ul>
                 <li>
-                    <button class="btn load-block" data-block="settings">
+                    <a href="<?php echo admin_url('admin.php?page=crm-settings'); ?>" class="btn">
                         <span class="iconify" data-icon="material-symbols:settings"></span>
-                        <span>Settings</span>
-                    </button>
+                        <span>CRM Settings</span>
+                    </a>
                 </li>
                 <li>
 

@@ -138,13 +138,14 @@ if (isset($_POST['submit_delete'])) {
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><?php echo esc_html($contact['service']); ?></td>
+                        <td><?php echo esc_html($contact['company']); ?></td>
                         <td><?php echo esc_html($contact['category']); ?></td>
+
+                        <td><?php echo esc_html($contact['service']); ?></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo esc_html($contact['email_1']); ?></td>
                         <td></td>
                         <td></td>
                     </tr>
