@@ -17,11 +17,11 @@ if (isset($_POST['submit_delete'])) {
 
     if (!empty($delete_contact_ids)) {
         $wpdb->query("DELETE FROM $table_name WHERE id IN (" . implode(',', $delete_contact_ids) . ")");
-        echo '<div class="updated"><p>Contactos eliminados correctamente</p></div>';
+        echo '<div class="updated"><p>Contacts deleted successfully.</p></div>';
 
         echo '<script> window.location.href = "' . admin_url('admin.php?page=crm-overview') . '";</script>';
     } else {
-        echo '<div class="error"><p>Por favor, selecciona al menos un contacto para eliminar</p></div>';
+        echo '<div class="error"><p>Please select at least one contact to delete.</p></div>';
     }
 }
 ?>
@@ -125,29 +125,29 @@ if (isset($_POST['submit_delete'])) {
                         </td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <td><?php echo esc_html($contact['since']); ?></td>
                         <td>
-                            <a class='button' href="">
+                            <?php echo esc_html($contact['gender']); ?>
+                            <span class='button'>
                                 <span class="iconify color-blue" data-icon="ic:baseline-circle"
                                     data-inline="false"></span>
-                            </a>
+                            </span>
                         </td>
-                        <td></td>
+                        <td><?php echo esc_html($contact['dob']); ?></td>
                         <td><?php echo esc_html($contact['first_name']); ?></td>
                         <td><?php echo esc_html($contact['last_name']); ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><?php echo esc_html($contact['company']); ?></td>
+                        <td><?php echo esc_html($contact['title']); ?></td>
                         <td><?php echo esc_html($contact['category']); ?></td>
-
                         <td><?php echo esc_html($contact['service']); ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo esc_html($contact['company']); ?></td>
+                        <td><?php echo esc_html($contact['city']); ?></td>
+                        <td><?php echo esc_html($contact['state']); ?></td>
+                        <td><?php echo esc_html($contact['zip']); ?></td>
+                        <td><?php echo esc_html($contact['phone_work']); ?></td>
+                        <td><?php echo esc_html($contact['phone_mobile']); ?></td>
                         <td><?php echo esc_html($contact['email_1']); ?></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo esc_html($contact['web']); ?></td>
+                        <td><?php echo esc_html($contact['slogan']); ?></td>
                     </tr>
                     <?php endforeach; ?>
 

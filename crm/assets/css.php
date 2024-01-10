@@ -23,6 +23,10 @@
     color: #ccc;
 }
 
+.color-pink {
+    color: #FF00BF;
+}
+
 .crm-wrap {
     border: 1px solid #d0d0d0;
     margin-top: 20px;
@@ -223,7 +227,8 @@
 
             td {
                 padding: 2px 5px;
-                border-bottom: solid 1px #e6e6e6
+                border-bottom: solid 1px #e6e6e6;
+                white-space: nowrap;
             }
 
 

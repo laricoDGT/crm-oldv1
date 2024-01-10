@@ -75,7 +75,7 @@ require_once plugin_dir_path(__FILE__) . 'inc/assets.php';
  
 require_once plugin_dir_path(__FILE__) . 'inc/overview.php';
 
-require_once plugin_dir_path(__FILE__) . 'inc/crm-settings.php';
+
 
 
  
@@ -89,6 +89,9 @@ function edit_contact_page() {
 }
 
 
+
+
+require_once plugin_dir_path(__FILE__) . 'inc/crm-settings.php';
 
 
 
