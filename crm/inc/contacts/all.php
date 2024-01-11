@@ -2,7 +2,7 @@
 global $wpdb;
 
 $table_name = $wpdb->prefix . 'crm_contacts';
-$per_page = 5;
+$per_page = isset($_GET['per_page']) ? intval($_GET['per_page']) : 5;
 $current_page = isset($_GET['paged']) ? max(1, intval($_GET['paged'])) : 1;
 $offset = ($current_page - 1) * $per_page;
 
@@ -45,8 +45,10 @@ if (isset($_POST['submit_delete'])) {
 <div class="all-contacts">
     <form method="get" action="">
         <input placeholder='Enter search term' type="search" name="search_term">
-        <input type="hidden" name="page" value="crm-overview"> <!-- Agregar este campo oculto -->
-        <button type="submit">Search</button>
+        <input type="hidden" name="page" value="crm-overview">
+        <button type="submit">
+            <span class="iconify color-green" data-icon="material-symbols:search" data-inline="false"></span>
+        </button>
     </form>
 
     <form method="post" action="">
@@ -193,12 +195,26 @@ if (isset($_POST['submit_delete'])) {
 
     </form>
 
-    <?php 
+    <div class="table-footer">
+        <div class="records">
+            <span>Records per Page</span>
+            <select name="per_page" id="per_page" onchange="changePerPage(this.value)">
+                <option value="5" <?php echo ($per_page == 5) ? 'selected' : ''; ?>>5</option>
+                <option value="25" <?php echo ($per_page == 25) ? 'selected' : ''; ?>>25</option>
+                <option value="50" <?php echo ($per_page == 50) ? 'selected' : ''; ?>>50</option>
+                <option value="100" <?php echo ($per_page == 100) ? 'selected' : ''; ?>>100</option>
+                <option value="200" <?php echo ($per_page == 200) ? 'selected' : ''; ?>>200</option>
+                <option value="300" <?php echo ($per_page == 300) ? 'selected' : ''; ?>>300</option>
+                <option value="500" <?php echo ($per_page == 500) ? 'selected' : ''; ?>>500</option>
+            </select>
+        </div>
+
+        <?php 
         $total_pages = ceil($total_contacts / $per_page);
         if ($total_pages > 1) {
             echo '<div class="pagination">';
             echo paginate_links(array(
-                'base' => add_query_arg(array('paged' => '%#%', 'search_term' => $search_term, 'page' => 'crm-overview')),
+                'base' => add_query_arg(array('paged' => '%#%', 'search_term' => $search_term, 'per_page' => $per_page, 'page' => 'crm-overview')),
                 'format' => '',
                 'prev_text' => __('&laquo;'),
                 'next_text' => __('&raquo;'),
@@ -209,9 +225,23 @@ if (isset($_POST['submit_delete'])) {
         }
     ?>
 
+        <div class="displaying">
+            Displaying <strong><?php echo (($current_page - 1) * $per_page) + 1; ?></strong> -
+            <strong><?php echo min($current_page * $per_page, $total_contacts); ?></strong> of
+            <strong><?php echo $total_contacts; ?></strong>
+        </div>
+    </div>
+
+
 </div>
 
 <script>
+function changePerPage(value) {
+    window.location.href = "<?php echo admin_url('admin.php?page=crm-overview&per_page='); ?>" + value;
+}
+
+
+
 document.getElementById('select-all').addEventListener('change', function() {
     var checkboxes = document.getElementsByClassName('delete-checkbox');
     for (var i = 0; i < checkboxes.length; i++) {

@@ -286,8 +286,7 @@
     }
 
     .pagination {
-        padding: 12px;
-        text-align: right;
+
 
         span,
         a {
@@ -403,6 +402,20 @@
         svg {
             font-size: 20px;
         }
+    }
+
+
+    .table-footer {
+
+        margin-top: 2px;
+        background: linear-gradient(to bottom, #e6e6e6 0%, #efefef 100%);
+        border-top: solid 1px #bcb0b0;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-inline: 12px;
+        padding-block: 6px;
     }
 }
 </style>
