@@ -355,7 +355,7 @@
                 width: 100%;
                 text-align: right;
                 justify-content: end;
-
+                min-width: 126px;
             }
 
             select,
@@ -366,11 +366,22 @@
                 width: 100%;
                 min-width: 148px;
             }
+
+            &.category {
+                label {
+                    width: auto;
+                }
+
+                select {
+                    max-width: 100%;
+                }
+            }
         }
 
         .large,
         .slogan,
-        .note {
+        .note,
+        .category {
             grid-column: span 4 / span 4;
         }
 

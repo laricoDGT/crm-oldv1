@@ -55,7 +55,7 @@ function display_contact_form_fields($contact = null) {
             $categories = get_categories_from_database();
             echo '<select name="' . $key . '[]" ' . $required . ' multiple>';
             foreach ($categories as $category) {
-                $selected = in_array($category->id, explode(',', $value)) ? 'selected' : '';
+                $selected = in_array($category->category_name, explode(',', $value)) ? 'selected' : '';
                 echo "<option value='{$category->category_name}' $selected>{$category->category_name}</option>";
             }
             echo '</select>';
@@ -72,14 +72,14 @@ function display_contact_form_fields($contact = null) {
 
 function get_contact_form_fields() {
     return [
-        'image' => 'Image',
-        'since' => 'Since',
-        'gender' => 'Gender',
-        'dob' => 'DOB',
+        // 'image' => 'Image',
+        
+        
         'first_name' => 'First Name',
         'last_name' => 'Last Name',
+        'gender' => 'Gender',
         'title' => 'Title',
-        'category' => 'Category',
+        
         'service' => 'Service',
         'company' => 'Company',
         'city' => 'City',
@@ -89,6 +89,11 @@ function get_contact_form_fields() {
         'phone_mobile' => 'Phone Mobile',
         'email_1' => 'Email',
         'web' => 'Web',
+        
+       
+        'since' => 'Since', 
+        'dob' => 'DOB',
+        'category' => 'Category',
         'slogan' => 'Slogan',
         'note' => 'Note',
     ];
