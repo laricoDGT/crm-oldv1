@@ -1,14 +1,31 @@
 <?php
+
+function get_categories_from_database() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'crm_categories';  
+    $categories = $wpdb->get_results("SELECT id, category_name FROM $table_name");
+
+    return $categories;
+}
+
+
+
 function get_common_data() {
     $fields = get_contact_form_fields();
     $data = array();
 
     foreach ($fields as $key => $label) {
-        $data[$key] = sanitize_input($_POST[$key]);
+        if ($key === 'category') {
+            $data[$key] = isset($_POST[$key]) ? implode(',', $_POST[$key]) : '';   
+        } else {
+            $data[$key] = sanitize_input($_POST[$key]);
+        }
     }
 
     return $data;
 }
+
+
 
 function display_contact_form_fields($contact = null) {
     $fields = get_contact_form_fields();
@@ -34,7 +51,15 @@ function display_contact_form_fields($contact = null) {
             echo '</select>';
         } elseif ($key === 'note') {
             echo '<textarea name="' . $key . '" ' . $required . '>' . $value . '</textarea>';
-        } else {
+        } elseif ($key === 'category') {
+            $categories = get_categories_from_database();
+            echo '<select name="' . $key . '[]" ' . $required . ' multiple>';
+            foreach ($categories as $category) {
+                $selected = in_array($category->id, explode(',', $value)) ? 'selected' : '';
+                echo "<option value='{$category->category_name}' $selected>{$category->category_name}</option>";
+            }
+            echo '</select>';
+        }else {
             echo '<input type="' . ($key === 'email_1' ? 'email' : ($key === 'since' ? 'date' : 'text')) . '" name="' . $key . '" value="' . $value . '" ' . $required . '>';
         }
 
@@ -43,6 +68,7 @@ function display_contact_form_fields($contact = null) {
     }
     echo '</div>';
 }
+
 
 function get_contact_form_fields() {
     return [

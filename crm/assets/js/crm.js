@@ -1,43 +1,53 @@
 function applyTabsScript(container) {
-  container.addEventListener("click", function (event) {
+  if (!container) {
+    return;
+  }
+
+  const tabsNav = container.querySelector(".tabs-nav");
+
+  tabsNav.addEventListener("click", function (event) {
     const tabsBtn = event.target.closest(".tabs-btn");
 
     if (tabsBtn) {
       const clickedIndex = Array.from(tabsBtn.parentNode.children).indexOf(
         tabsBtn
       );
-      const tabContents = container.querySelectorAll(".tabs-content");
-      tabContents.forEach((content) => {
-        content.classList.remove("current");
-      });
-
-      tabContents[clickedIndex].classList.add("current");
-
-      const tabs = container.querySelectorAll(".tabs-nav .tabs-btn");
-      tabs.forEach((tab) => {
-        tab.classList.remove("current");
-      });
-      tabsBtn.classList.add("current");
+      showTab(container, clickedIndex);
+      updateURLHash(tabsBtn.id);
     }
   });
-}
 
-function observeDOMChanges() {
-  const observer = new MutationObserver(function (mutations) {
-    mutations.forEach(function (mutation) {
-      if (mutation.addedNodes.length > 0) {
-        mutation.addedNodes.forEach(function (node) {
-          if (node.nodeType === 1 && node.classList.contains("tabs")) {
-            applyTabsScript(node);
-          }
-        });
-      }
+  function showTab(container, index) {
+    const tabContents = container.querySelectorAll(".tabs-content");
+    tabContents.forEach((content) => {
+      content.classList.remove("current");
     });
-  });
 
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true,
-  });
+    tabContents[index].classList.add("current");
+
+    const tabs = container.querySelectorAll(".tabs-nav .tabs-btn");
+    tabs.forEach((tab) => {
+      tab.classList.remove("current");
+    });
+    tabs[index].classList.add("current");
+  }
+
+  function updateURLHash(hash) {
+    window.location.hash = hash;
+  }
+
+  function checkURLHash() {
+    const hash = window.location.hash.substr(1);
+    if (hash) {
+      const tabBtn = tabsNav.querySelector(`#${hash}`);
+      if (tabBtn) {
+        const index = Array.from(tabsNav.children).indexOf(tabBtn);
+        showTab(container, index);
+      }
+    }
+  }
+
+  checkURLHash();
 }
-observeDOMChanges();
+
+applyTabsScript(document.querySelector(".tabs"));

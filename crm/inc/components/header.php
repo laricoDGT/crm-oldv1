@@ -53,11 +53,11 @@
                     </button>
                 </li>
                 <li>
-                    <button class="btn load-block" data-block="">
+                    <a href="<?php echo admin_url('admin.php?page=crm-categories'); ?>" class="btn">
                         <span class="iconify color-yellow" data-icon="material-symbols-light:folder-open"
                             data-inline="false"></span>
                         <span>Categories</span>
-                    </button>
+                    </a>
                 </li>
                 <li>
                     <button class="btn load-block" data-block="">

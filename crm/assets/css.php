@@ -166,6 +166,72 @@
         }
     }
 
+    .wp-list-table {
+
+        border-spacing: 0;
+
+        input {
+            margin: 0;
+        }
+
+
+        th,
+        td {
+            border-right: solid 1px #e6e6e6;
+
+        }
+
+        th {
+            font-weight: bold;
+            font-size: 12px;
+            white-space: nowrap;
+            background: linear-gradient(to bottom, #f9f9f9 0%, #e3e4e6 100%);
+            padding: 5px 10px;
+        }
+
+
+        tr {
+            &:hover {
+                background-color: #e0e0e0;
+            }
+        }
+
+        td {
+            padding: 2px 5px;
+            border-bottom: solid 1px #e6e6e6;
+            white-space: nowrap;
+        }
+
+
+
+        .button {
+            font-size: 20px;
+            line-height: 1;
+            padding: 0 3px;
+            border: 0;
+            width: 28px;
+            height: 28px;
+            min-height: auto;
+            display: grid;
+            place-content: center;
+            border-radius: 8px;
+            background: transparent;
+            color: inherit;
+            margin: auto;
+        }
+
+        .edit-btn {
+
+            background: #e8e8e8;
+
+
+            &:hover {
+                background-color: #fff;
+            }
+        }
+
+    }
+
     /* ALL CONTACTS */
 
     .all-contacts {
@@ -195,71 +261,7 @@
             }
         }
 
-        .wp-list-table {
 
-            border-spacing: 0;
-
-            input {
-                margin: 0;
-            }
-
-
-            th,
-            td {
-                border-right: solid 1px #e6e6e6;
-
-            }
-
-            th {
-                font-weight: bold;
-                font-size: 12px;
-                white-space: nowrap;
-                background: linear-gradient(to bottom, #f9f9f9 0%, #e3e4e6 100%);
-                padding: 5px 10px;
-            }
-
-
-            tr {
-                &:hover {
-                    background-color: #e0e0e0;
-                }
-            }
-
-            td {
-                padding: 2px 5px;
-                border-bottom: solid 1px #e6e6e6;
-                white-space: nowrap;
-            }
-
-
-
-            .button {
-                font-size: 20px;
-                line-height: 1;
-                padding: 0 3px;
-                border: 0;
-                width: 28px;
-                height: 28px;
-                min-height: auto;
-                display: grid;
-                place-content: center;
-                border-radius: 8px;
-                background: transparent;
-                color: inherit;
-                margin: auto;
-            }
-
-            .edit-btn {
-
-                background: #e8e8e8;
-
-
-                &:hover {
-                    background-color: #fff;
-                }
-            }
-
-        }
 
         .options {
             border-top-left-radius: 6px;
@@ -306,6 +308,23 @@
 
         .current {
             opacity: 0.6;
+        }
+    }
+
+
+    .form-category {
+        form {}
+
+        .fields {
+            display: grid;
+            gap: 20px;
+            margin-block: 30px;
+
+            .field {
+                display: flex;
+                align-items: center;
+                gap: 8px
+            }
         }
     }
 
@@ -362,14 +381,16 @@
             }
         }
 
-        .button {
-            display: flex;
-            align-items: center;
-            gap: 4px;
 
-            svg {
-                font-size: 20px;
-            }
+    }
+
+    .button {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        svg {
+            font-size: 20px;
         }
     }
 }
