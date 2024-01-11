@@ -339,15 +339,19 @@
 
             }
 
+            select,
+            textarea,
             input {
                 border: solid 1px #b5b8c8;
                 border-radius: 0;
                 width: 100%;
-
+                min-width: 148px;
             }
         }
 
-        .large {
+        .large,
+        .slogan,
+        .note {
             grid-column: span 4 / span 4;
         }
 

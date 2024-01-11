@@ -81,8 +81,13 @@ if (isset($_POST['submit_delete'])) {
                     </tr>
                 </thead>
                 <tbody>
-
-                    <?php foreach ($contacts as $contact) : ?>
+                    <?php
+                    if ($total_contacts == 0) {
+                        echo '<tr><td colspan="29"><div class="notice notice-warning"><p>No contacts found.</p></div></td></tr>';
+                    } else {
+                        foreach ($contacts as $contact) :
+                            // Render your contact rows
+                            ?>
                     <tr>
                         <td class='select'><input type="checkbox" class="delete-checkbox" name="delete_contact_ids[]"
                                 value="<?php echo esc_attr($contact['id']); ?>"></td>
@@ -111,25 +116,32 @@ if (isset($_POST['submit_delete'])) {
                                 <span class="iconify color-yellow" data-icon="material-symbols:folder-open-rounded"
                                     data-inline="false"></span>
                             </a>
-
-
-
                         </td>
                         <td>
                             <a class='button' href="">
                                 <span class="iconify color-gray" data-icon="ic:baseline-circle"
                                     data-inline="false"></span>
                             </a>
-
-
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td>type</td>
+                        <td><?php echo esc_html($contact['image']); ?></td>
                         <td><?php echo esc_html($contact['since']); ?></td>
                         <td>
-                            <?php echo esc_html($contact['gender']); ?>
+                            <?php
+                                $gender = esc_html($contact['gender']);
+                                // echo $gender;
+                                 
+                                $color_class = '';
+                                if ($gender === 'male') {
+                                    $color_class = 'color-blue';
+                                } elseif ($gender === 'female') {
+                                    $color_class = 'color-pink';
+                                } else {
+                                    $color_class = 'color-gray';
+                                }
+                                ?>
                             <span class='button'>
-                                <span class="iconify color-blue" data-icon="ic:baseline-circle"
+                                <span class="iconify <?php echo $color_class; ?>" data-icon="ic:baseline-circle"
                                     data-inline="false"></span>
                             </span>
                         </td>
@@ -149,8 +161,9 @@ if (isset($_POST['submit_delete'])) {
                         <td><?php echo esc_html($contact['web']); ?></td>
                         <td><?php echo esc_html($contact['slogan']); ?></td>
                     </tr>
-                    <?php endforeach; ?>
-
+                    <?php endforeach;
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -171,7 +184,6 @@ if (isset($_POST['submit_delete'])) {
             echo '</div>';
         }
         ?>
-
     </form>
 </div>
 
