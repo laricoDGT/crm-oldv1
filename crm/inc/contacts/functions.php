@@ -35,13 +35,13 @@ function display_contact_form_fields($contact = null) {
         $class = strtolower(str_replace(' ', '_', $key));
         echo '<div class="field ' . $class . '">';
         echo '<label for="' . $key . '">' . $label;
-        if ($key === 'first_name' || $key === 'last_name' || $key === 'email_1') {
+        if ($key === 'first_name' || $key === 'last_name') {
             echo '<span class="color-red">*</span>';
         }
         echo '</label>';
 
         $value = ($contact && property_exists($contact, $key)) ? esc_attr($contact->$key) : '';
-        $required = ($key === 'first_name' || $key === 'last_name' || $key === 'email_1') ? 'required' : '';
+        $required = ($key === 'first_name' || $key === 'last_name') ? 'required' : '';
 
         if ($key === 'gender') {
             echo '<select name="' . $key . '" ' . $required . '>';

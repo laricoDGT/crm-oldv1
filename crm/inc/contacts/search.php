@@ -6,27 +6,14 @@ $per_page = 5;
 $current_page = isset($_GET['paged']) ? max(1, intval($_GET['paged'])) : 1;
 $offset = ($current_page - 1) * $per_page;
 
-$search_term = isset($_GET['search_term']) ? sanitize_text_field($_GET['search_term']) : '';
-$fields_to_search = array(
-    'first_name', 'last_name', 'email_1', 'zip', 'Category', 'Service', 'City', 'State'
-);
+// Handle search
+$search_term = isset($_GET['search']) ? sanitize_text_field($_GET['search']) : '';
+$search_condition = !empty($search_term) ? "WHERE first_name LIKE '%$search_term%' OR last_name LIKE '%$search_term%' OR email_1 LIKE '%$search_term%'" : '';
 
-$query = "SELECT * FROM $table_name";
+$contacts = $wpdb->get_results("SELECT * FROM $table_name $search_condition LIMIT $per_page OFFSET $offset", ARRAY_A);
+$total_contacts = $wpdb->get_var("SELECT COUNT(id) FROM $table_name $search_condition");
 
-if (!empty($search_term)) {
-    $conditions = array();
-    foreach ($fields_to_search as $field) {
-        $conditions[] = "$field LIKE '%{$search_term}%'";
-    }
-    $query .= " WHERE " . implode(' OR ', $conditions);
-}
-
-$query .= " ORDER BY registration_date DESC";
-$query .= " LIMIT $per_page OFFSET $offset";
-
-$contacts = $wpdb->get_results($query, ARRAY_A);
-$total_contacts = $wpdb->get_var("SELECT COUNT(id) FROM $table_name");
-
+ 
 if (isset($_POST['submit_delete'])) {
     $delete_contact_ids = isset($_POST['delete_contact_ids']) ? array_map('intval', $_POST['delete_contact_ids']) : array();
 
@@ -41,13 +28,17 @@ if (isset($_POST['submit_delete'])) {
 }
 ?>
 
-
 <div class="all-contacts">
-    <form method="get" action="">
-        <input placeholder='Enter search term' type="search" name="search_term">
-        <input type="hidden" name="page" value="crm-overview"> <!-- Agregar este campo oculto -->
+    <form action="" method="get">
+        <input placeholder='Enter search term' type="search" name="search" value="<?php echo esc_attr($search_term); ?>"
+            id="">
         <button type="submit">Search</button>
     </form>
+
+    <!-- Search results -->
+    <?php if (!empty($search_term)) : ?>
+    <h2>Search Results for '<?php echo esc_html($search_term); ?>'</h2>
+    <?php endif; ?>
 
     <form method="post" action="">
         <div class="options">
@@ -71,7 +62,7 @@ if (isset($_POST['submit_delete'])) {
         </div>
 
         <div class="scroll">
-            <table class="wp-list-table  fixed striped">
+            <table class="wp-list-table fixed striped">
                 <thead>
                     <tr>
                         <th class='select'><input type="checkbox" id="select-all"></th>
@@ -83,8 +74,9 @@ if (isset($_POST['submit_delete'])) {
                         <th class='small'>Bill</th>
                         <th class='medium'>Type</th>
                         <th>Image</th>
+                        <th>Since</th>
                         <th>Gender</th>
-
+                        <th>DOB</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Title</th>
@@ -99,9 +91,6 @@ if (isset($_POST['submit_delete'])) {
                         <th>Email</th>
                         <th>Web</th>
                         <th>Slogan</th>
-                        <th>DOB</th>
-                        <th>Since</th>
-                        <th>Registration date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -148,7 +137,7 @@ if (isset($_POST['submit_delete'])) {
                         </td>
                         <td>type</td>
                         <td><?php echo esc_html($contact['image']); ?></td>
-
+                        <td><?php echo esc_html($contact['since']); ?></td>
                         <td>
                             <?php
                                 $gender = esc_html($contact['gender']); 
@@ -166,7 +155,7 @@ if (isset($_POST['submit_delete'])) {
                                     data-inline="false"></span>
                             </span>
                         </td>
-
+                        <td><?php echo esc_html($contact['dob']); ?></td>
                         <td><?php echo esc_html($contact['first_name']); ?></td>
                         <td><?php echo esc_html($contact['last_name']); ?></td>
                         <td><?php echo esc_html($contact['title']); ?></td>
@@ -181,24 +170,19 @@ if (isset($_POST['submit_delete'])) {
                         <td><?php echo esc_html($contact['email_1']); ?></td>
                         <td><?php echo esc_html($contact['web']); ?></td>
                         <td><?php echo esc_html($contact['slogan']); ?></td>
-                        <td><?php echo esc_html($contact['dob']); ?></td>
-                        <td><?php echo esc_html($contact['since']); ?></td>
-                        <td><?php echo esc_html($contact['registration_date']); ?></td>
                     </tr>
                     <?php endforeach; } ?>
                 </tbody>
             </table>
         </div>
 
-
-    </form>
-
-    <?php 
+        <?php
+        // Pagination
         $total_pages = ceil($total_contacts / $per_page);
         if ($total_pages > 1) {
             echo '<div class="pagination">';
             echo paginate_links(array(
-                'base' => add_query_arg(array('paged' => '%#%', 'search_term' => $search_term, 'page' => 'crm-overview')),
+                'base' => add_query_arg('paged', '%#%'),
                 'format' => '',
                 'prev_text' => __('&laquo;'),
                 'next_text' => __('&raquo;'),
@@ -207,8 +191,8 @@ if (isset($_POST['submit_delete'])) {
             ));
             echo '</div>';
         }
-    ?>
-
+        ?>
+    </form>
 </div>
 
 <script>

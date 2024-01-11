@@ -82,6 +82,14 @@ function crm_plugin_menu() {
         'edit-category',
         'edit_category_page'
     );
+    add_submenu_page(
+        'crm-search',
+        '',
+        '',
+        'manage_options',
+        'search',
+        'search_page'
+    );
 
     add_submenu_page(
         'crm-overview',
@@ -115,6 +123,10 @@ function new_contact_page() {
 
 function edit_contact_page() { 
     require_once plugin_dir_path(__FILE__) . 'inc/contacts/edit.php';
+}
+
+function edit_contasearch_pagect_page() { 
+    require_once plugin_dir_path(__FILE__) . 'inc/contacts/search.php';
 }
 
 // Categories

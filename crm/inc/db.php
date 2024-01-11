@@ -8,6 +8,7 @@ $sql_contacts = "CREATE TABLE $table_name_contacts (
     id mediumint(9) NOT NULL AUTO_INCREMENT,
     image varchar(255),
     since date,
+    registration_date timestamp DEFAULT CURRENT_TIMESTAMP, 
     gender varchar(255),
     dob date,
     first_name varchar(255) NOT NULL,
