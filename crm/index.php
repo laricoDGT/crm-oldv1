@@ -59,12 +59,7 @@ function crm_plugin_menu() {
         'manage_options',
         'crm-settings',
         'crm_settings_page'
-    );
-
-     
-   
-  
-    
+    ); 
 
     add_submenu_page(
         'crm-overview',
@@ -82,14 +77,7 @@ function crm_plugin_menu() {
         'edit-category',
         'edit_category_page'
     );
-    add_submenu_page(
-        'crm-search',
-        '',
-        '',
-        'manage_options',
-        'search',
-        'search_page'
-    );
+    
 
     add_submenu_page(
         'crm-overview',
