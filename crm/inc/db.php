@@ -11,6 +11,7 @@ $sql_contacts = "CREATE TABLE $table_name_contacts (
     registration_date timestamp DEFAULT CURRENT_TIMESTAMP, 
     gender varchar(255),
     dob date,
+    bill varchar(255) NOT NULL,
     first_name varchar(255) NOT NULL,
     last_name varchar(255) NOT NULL,
     title varchar(255) NOT NULL,

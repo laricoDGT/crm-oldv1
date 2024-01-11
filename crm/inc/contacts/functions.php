@@ -49,7 +49,15 @@ function display_contact_form_fields($contact = null) {
             echo '<option value="female" ' . selected('female', $value, false) . '>Female</option>';
             echo '<option value="other" ' . selected('other', $value, false) . '>Other</option>';
             echo '</select>';
-        } elseif ($key === 'note') {
+        } 
+        elseif ($key === 'bill') {
+            echo '<select name="' . $key . '" ' . $required . '>';
+            echo '<option value="blank" ' . selected('blank', $value, false) . '>Blank</option>';
+            echo '<option value="green" ' . selected('green', $value, false) . '>Green</option>';
+            echo '<option value="red" ' . selected('red', $value, false) . '>Red</option>';
+            echo '</select>';
+        }
+        elseif ($key === 'note') {
             echo '<textarea name="' . $key . '" ' . $required . '>' . $value . '</textarea>';
         } elseif ($key === 'category') {
             $categories = get_categories_from_database();
@@ -93,6 +101,7 @@ function get_contact_form_fields() {
        
         'since' => 'Since', 
         'dob' => 'DOB',
+        'bill' => 'Bill',
         'category' => 'Category',
         'slogan' => 'Slogan',
         'note' => 'Note',

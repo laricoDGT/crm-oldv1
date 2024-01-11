@@ -125,15 +125,25 @@ if (isset($_POST['submit_delete'])) {
                             </a>
                         </td>
                         <td>
-                            <a class='button' href="">
-                                <span class="iconify" data-icon="material-symbols:outgoing-mail"
-                                    data-inline="false"></span>
-                            </a>
+
+                            <?php 
+                                if (!empty($contact['email_1'])) {
+                                    echo '<a class="button" href="mailto:' . esc_html($contact['email_1']) . '">
+                                            <span class="iconify" data-icon="material-symbols:outgoing-mail" data-inline="false"></span>
+                                        </a>';
+                                }
+                            ?>
+
                         </td>
                         <td>
-                            <a class='button' href="">
-                                <span class="iconify" data-icon="logos:whatsapp-icon" data-inline="false"></span>
-                            </a>
+                            <?php
+                                if (!empty($contact['phone_mobile'])) { 
+                                    $phone_number = str_replace(['.', '-', ' '], '', $contact['phone_mobile']); 
+                                    echo '<a target="_blank" class="button" href="https://wa.me/' . esc_html($phone_number) . '">
+                                            <span class="iconify" data-icon="logos:whatsapp-icon" data-inline="false"></span>
+                                        </a>';
+                                }
+                            ?>
 
                         </td>
                         <td>
@@ -143,10 +153,28 @@ if (isset($_POST['submit_delete'])) {
                             </a>
                         </td>
                         <td>
-                            <a class='button' href="">
-                                <span class="iconify color-gray" data-icon="ic:baseline-circle"
+                            <?php
+                            $bill = esc_html($contact['bill']);
+                            $color_class = '';
+
+                            switch ($bill) {
+                                case 'green':
+                                    $color_class = 'color-green';
+                                    break;
+                                case 'red':
+                                    $color_class = 'color-red';
+                                    break;
+                                default:
+                                    $color_class = 'color-gray';
+                                    break;
+                            }
+                            ?>
+                            <span class='button'>
+                                <span class="iconify <?php echo $color_class; ?>" data-icon="ic:baseline-circle"
                                     data-inline="false"></span>
-                            </a>
+                            </span>
+
+
                         </td>
                         <td>type</td>
                         <td><?php echo esc_html($contact['image']); ?></td>
