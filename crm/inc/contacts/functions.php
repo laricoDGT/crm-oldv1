@@ -119,7 +119,9 @@ function display_contact_form_fields($contact = null) {
             }
             echo '</select>';
         }else {
-            echo '<input type="' . ($key === 'email_1' ? 'email' : ($key === 'since' ? 'date' : 'text')) . '" name="' . $key . '" value="' . $value . '" ' . $required . '>';
+            
+            echo '<input type="' . ($key === 'email_1' ? 'email' : ($key === 'since' ? 'date' : ($key === 'dob' ? 'date' : 'text'))) . '" name="' . $key . '" value="' . $value . '" ' . $required . '>';
+
         }
 
         echo '<br>';
