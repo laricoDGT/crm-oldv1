@@ -1,12 +1,11 @@
 <?php
 /*
 Plugin Name: CRM Plugin
-Description: Plugin para gestionar contactos y CRM.
-Version: 1.0
-Author: Larico for PlatformBuilder.
+Description: CRM.
+Version: 2.0
+Author: W.A. (PlatformBuilder)
 */
 
-  
 
 register_activation_hook(__FILE__, 'crm_plugin_activate');
 function crm_plugin_activate() {
@@ -50,10 +49,7 @@ function crm_plugin_menu() {
         'manage_options',
         'crm-categories',
         'crm_categories_page', 
-    );
-
-   
-
+    ); 
 
     add_submenu_page(
         'crm-overview',
