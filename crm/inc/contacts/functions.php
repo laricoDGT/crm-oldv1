@@ -6,6 +6,13 @@ function get_categories_from_database() {
     return $categories;
 }
 
+function get_services_from_database() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'crm_services';
+    $services = $wpdb->get_results("SELECT id, service_name FROM $table_name");
+    return $services;
+}
+
 function get_contact_types_from_database() {
     global $wpdb;
     $table_name = $wpdb->prefix . 'crm_contacts_type';
@@ -54,6 +61,19 @@ function display_contact_form_fields($contact = null) {
             echo '<option value="blank" ' . selected('blank', $value, false) . '>Blank</option>';
             echo '<option value="green" ' . selected('green', $value, false) . '>Green</option>';
             echo '<option value="red" ' . selected('red', $value, false) . '>Red</option>';
+            echo '</select>';
+        }
+        elseif ($key === 'service') {
+            $services = get_services_from_database();
+            echo '<select name="' . $key . '" ' . $required . '>';
+            
+           
+            echo '<option value="" ' . selected('', $value, false) . '></option>';
+            
+            foreach ($services as $service) {
+                $selected = ($value == $service->service_name) ? 'selected' : '';
+                echo "<option value='{$service->service_name}' $selected>{$service->service_name}</option>";
+            }
             echo '</select>';
         }
         elseif ($key === 'type') {

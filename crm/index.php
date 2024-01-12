@@ -53,6 +53,15 @@ function crm_plugin_menu() {
 
     add_submenu_page(
         'crm-overview',
+        'CRM Services',
+        'CRM Services',
+        'manage_options',
+        'crm-services',
+        'crm_services_page', 
+    ); 
+
+    add_submenu_page(
+        'crm-overview',
         'CRM Settings',
         'CRM Settings',
         'manage_options',
@@ -87,6 +96,22 @@ function crm_plugin_menu() {
         'edit_category_page'
     );
     
+    add_submenu_page(
+        'crm-overview',
+        '',
+        '',
+        'manage_options',
+        'new-service',
+        'new_service_page'
+    );
+    add_submenu_page(
+        'crm-overview',
+        '',
+        '',
+        'manage_options',
+        'edit-service',
+        'edit_service_page'
+    );
 
     add_submenu_page(
         'crm-overview',
@@ -171,6 +196,24 @@ function new_category_page() {
 function edit_category_page() { 
     require_once plugin_dir_path(__FILE__) . 'inc/categories/edit.php';
 }
+
+
+// Services
+
+function crm_services_page() {  
+    require_once plugin_dir_path(__FILE__) . 'inc/services/all.php';
+}
+
+function new_service_page() {  
+    require_once plugin_dir_path(__FILE__) . 'inc/services/add.php';
+}
+
+function edit_service_page() { 
+    require_once plugin_dir_path(__FILE__) . 'inc/services/edit.php';
+}
+
+
+
 
 // general
 require_once plugin_dir_path(__FILE__) . 'inc/crm-settings.php';
