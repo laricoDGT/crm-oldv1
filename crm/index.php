@@ -219,5 +219,6 @@ function edit_service_page() {
 require_once plugin_dir_path(__FILE__) . 'inc/crm-settings.php';
 
 
-
+// shortcode
+require_once plugin_dir_path(__FILE__) . 'inc/shortcode.php';
  

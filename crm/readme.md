@@ -13,3 +13,9 @@ function make_unique_name($table, $column, $name) {
         return $name;
     }
 ```
+
+# Shortcodes
+
+```
+[crm_search zip="" city='' service='' category='Awesome']
+```

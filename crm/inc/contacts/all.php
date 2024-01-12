@@ -2,7 +2,7 @@
 global $wpdb;
 
 $table_name = $wpdb->prefix . 'crm_contacts';
-$per_page = isset($_GET['per_page']) ? intval($_GET['per_page']) : 5;
+$per_page = isset($_GET['per_page']) ? intval($_GET['per_page']) : 25;
 $current_page = isset($_GET['paged']) ? max(1, intval($_GET['paged'])) : 1;
 $offset = ($current_page - 1) * $per_page;
 

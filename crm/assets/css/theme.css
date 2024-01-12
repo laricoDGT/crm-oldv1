@@ -1,0 +1,25 @@
+.crm-search-container {
+  .crm-sc-title {
+    font-size: 1.5rem;
+  }
+}
+.shortcode-items {
+  margin: 0 0 30px 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+
+  li {
+    list-style: none;
+    border-bottom: solid 1px #ccc;
+    padding-bottom: 12px;
+  }
+  h4 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.5srem;
+  }
+  p {
+    margin: 0;
+  }
+}
