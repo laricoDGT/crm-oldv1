@@ -65,6 +65,13 @@ function display_contact_form_fields($contact = null) {
             }
             echo '</datalist>';
         } 
+
+        elseif ($key === 'image') {
+            $value = ($contact && property_exists($contact, $key)) ? esc_attr($contact->$key) : '';
+            echo '<input type="text" name="' . $key . '" value="' . $value . '" class="image-upload-field">';
+            echo '<button class="button  upload-image-btn" data-target="' . $key . '">   <span class="iconify" data-icon="material-symbols:add-photo-alternate"></span> Select Image </button>';
+        }
+        
         elseif ($key === 'gender') {
             echo '<select name="' . $key . '" ' . $required . '>';
             echo '<option value="male" ' . selected('male', $value, false) . '>Male</option>';
@@ -124,7 +131,7 @@ function display_contact_form_fields($contact = null) {
 
 function get_contact_form_fields() {
     return [
-        // 'image' => 'Image', 
+        
         'type' => 'Type',
         'first_name' => 'First Name',
         'last_name' => 'Last Name',
@@ -145,6 +152,7 @@ function get_contact_form_fields() {
         'category' => 'Category',
         'slogan' => 'Slogan',
         'note' => 'Note',
+        'image' => 'Image', 
     ];
 }
 
@@ -163,4 +171,32 @@ function redirect_to_crm_overview() {
         }, 1000);
     </script>';
 }
+
+
+// wp_enqueue_script('jquery');
+wp_enqueue_media();
+
+echo '<script>
+    jQuery(document).ready(function($){
+      
+        $(".upload-image-btn").on("click", function(e){
+            e.preventDefault();
+
+            var button = $(this);
+            var fieldName = button.data("target");
+ 
+            var mediaUploader = wp.media({
+                frame: "select",
+                multiple: false,
+            });
+ 
+            mediaUploader.on("select", function(){
+                var attachment = mediaUploader.state().get("selection").first().toJSON(); 
+                $("input[name=\'" + fieldName + "\']").val(attachment.url);
+            }); 
+            mediaUploader.open();
+        });
+    });
+</script>';
+
 ?>

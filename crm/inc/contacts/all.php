@@ -84,7 +84,7 @@ if (isset($_POST['submit_delete'])) {
                         <th class=''>Papers</th>
                         <th class='small'>Bill</th>
                         <th class='medium'>Type</th>
-                        <th>Image</th>
+                        <th class='avatar'>Image</th>
                         <th>Gender</th>
 
                         <th>First Name</th>
@@ -177,7 +177,17 @@ if (isset($_POST['submit_delete'])) {
 
                         </td>
                         <td><?php echo esc_html($contact['type']); ?></td>
-                        <td><?php echo esc_html($contact['image']); ?></td>
+                        <td>
+
+                            <?php
+                                $image_url = esc_html($contact['image']); 
+                                if (filter_var($image_url, FILTER_VALIDATE_URL)) {
+                                    echo "<img src='$image_url' class='avatar-img' loading='lazy' width='32' height='32' />";
+                                } else {
+                                    echo "";
+                                }
+                            ?>
+                        </td>
 
                         <td>
                             <?php

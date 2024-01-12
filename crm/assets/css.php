@@ -215,6 +215,20 @@
         }
 
 
+        .avatar-img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: block;
+            margin: auto;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                transform: scale(2.5);
+            }
+        }
+
+
 
         .button {
             font-size: 20px;
@@ -232,6 +246,8 @@
             margin: auto;
         }
 
+
+
         .edit-btn {
 
             background: #e8e8e8;
@@ -242,6 +258,11 @@
             }
         }
 
+    }
+
+
+    .upload-image-btn {
+        padding: 0 4px;
     }
 
     /* ALL CONTACTS */
@@ -398,7 +419,8 @@
         .large,
         .slogan,
         .note,
-        .category {
+        .category,
+        .image {
             grid-column: span 4 / span 4;
         }
 
