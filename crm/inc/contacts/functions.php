@@ -1,19 +1,21 @@
 <?php
-
 function get_categories_from_database() {
     global $wpdb;
     $table_name = $wpdb->prefix . 'crm_categories';  
     $categories = $wpdb->get_results("SELECT id, category_name FROM $table_name");
-
     return $categories;
 }
 
-
+function get_contact_types_from_database() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'crm_contacts_type';
+    $types = $wpdb->get_results("SELECT id, contact_type_name FROM $table_name");
+    return $types;
+}
 
 function get_common_data() {
     $fields = get_contact_form_fields();
     $data = array();
-
     foreach ($fields as $key => $label) {
         if ($key === 'category') {
             $data[$key] = isset($_POST[$key]) ? implode(',', $_POST[$key]) : '';   
@@ -21,11 +23,8 @@ function get_common_data() {
             $data[$key] = sanitize_input($_POST[$key]);
         }
     }
-
     return $data;
 }
-
-
 
 function display_contact_form_fields($contact = null) {
     $fields = get_contact_form_fields();
@@ -57,6 +56,15 @@ function display_contact_form_fields($contact = null) {
             echo '<option value="red" ' . selected('red', $value, false) . '>Red</option>';
             echo '</select>';
         }
+        elseif ($key === 'type') {
+            $types = get_contact_types_from_database();
+            echo '<select name="' . $key . '" ' . $required . '>';
+            foreach ($types as $contact_type) {
+                $selected = ($value == $contact_type->contact_type_name) ? 'selected' : '';
+                echo "<option value='{$contact_type->contact_type_name}' $selected>{$contact_type->contact_type_name}</option>";
+            }
+            echo '</select>';
+        }
         elseif ($key === 'note') {
             echo '<textarea name="' . $key . '" ' . $required . '>' . $value . '</textarea>';
         } elseif ($key === 'category') {
@@ -80,14 +88,12 @@ function display_contact_form_fields($contact = null) {
 
 function get_contact_form_fields() {
     return [
-        // 'image' => 'Image',
-        
-        
+        // 'image' => 'Image', 
+        'type' => 'Type',
         'first_name' => 'First Name',
         'last_name' => 'Last Name',
         'gender' => 'Gender',
-        'title' => 'Title',
-        
+        'title' => 'Title', 
         'service' => 'Service',
         'company' => 'Company',
         'city' => 'City',
@@ -96,9 +102,7 @@ function get_contact_form_fields() {
         'phone_work' => 'Phone Work',
         'phone_mobile' => 'Phone Mobile',
         'email_1' => 'Email',
-        'web' => 'Web',
-        
-       
+        'web' => 'Web', 
         'since' => 'Since', 
         'dob' => 'DOB',
         'bill' => 'Bill',

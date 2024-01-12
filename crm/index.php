@@ -52,6 +52,9 @@ function crm_plugin_menu() {
         'crm_categories_page', 
     );
 
+   
+
+
     add_submenu_page(
         'crm-overview',
         'CRM Settings',
@@ -60,6 +63,16 @@ function crm_plugin_menu() {
         'crm-settings',
         'crm_settings_page'
     ); 
+
+
+    add_submenu_page(
+        'crm-overview',
+        '',
+        '',
+        'manage_options',
+        'crm-contacts-type',
+        'crm_contacts_type_page', 
+    );
 
     add_submenu_page(
         'crm-overview',
@@ -78,6 +91,24 @@ function crm_plugin_menu() {
         'edit_category_page'
     );
     
+
+    add_submenu_page(
+        'crm-overview',
+        '',
+        '',
+        'manage_options',
+        'new-contacts-type',
+        'new_contacts_type_page'
+    );
+
+    add_submenu_page(
+        'crm-overview',
+        '',
+        '',
+        'manage_options',
+        'edit-contacts-type',
+        'edit_contacts_type_page'
+    );
 
     add_submenu_page(
         'crm-overview',
@@ -117,6 +148,20 @@ function edit_contasearch_pagect_page() {
     require_once plugin_dir_path(__FILE__) . 'inc/contacts/search.php';
 }
 
+// Contacts Type
+
+function crm_contacts_type_page() {  
+    require_once plugin_dir_path(__FILE__) . 'inc/contacts-type/all.php';
+}
+
+function new_contacts_type_page() {  
+    require_once plugin_dir_path(__FILE__) . 'inc/contacts-type/add.php';
+}
+
+function edit_contacts_type_page() { 
+    require_once plugin_dir_path(__FILE__) . 'inc/contacts-type/edit.php';
+}
+
 // Categories
 
 function crm_categories_page() {  
@@ -131,7 +176,7 @@ function edit_category_page() {
     require_once plugin_dir_path(__FILE__) . 'inc/categories/edit.php';
 }
 
-
+// general
 require_once plugin_dir_path(__FILE__) . 'inc/crm-settings.php';
 
 

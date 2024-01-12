@@ -1,7 +1,7 @@
 <?php
 global $wpdb;
 
-$table_name = $wpdb->prefix . 'crm_categories';
+$table_name = $wpdb->prefix . 'crm_contacts_type';
 $per_page = 50;
 $current_page = isset($_GET['paged']) ? max(1, intval($_GET['paged'])) : 1;
 $offset = ($current_page - 1) * $per_page;
@@ -17,11 +17,11 @@ if (isset($_POST['submit_delete'])) {
 
     if (!empty($delete_category_ids)) {
         $wpdb->query("DELETE FROM $table_name WHERE id IN (" . implode(',', $delete_category_ids) . ")");
-        echo '<div class="updated"><p>Categories deleted successfully.</p></div>';
+        echo '<div class="updated"><p>Contact Type deleted successfully.</p></div>';
 
-        echo '<script> window.location.href = "' . admin_url('admin.php?page=crm-categories') . '";</script>';
+        echo '<script> window.location.href = "' . admin_url('admin.php?page=crm-contacts-type') . '";</script>';
     } else {
-        echo '<div class="error"><p>Please select at least one category to delete.</p></div>';
+        echo '<div class="error"><p>Please select at least one Type to delete.</p></div>';
     }
 }
 ?>
@@ -30,35 +30,42 @@ if (isset($_POST['submit_delete'])) {
 
 
 <div class="tabs">
-
-
     <div class="tabs-nav">
-        <a href="<?php echo admin_url('admin.php?page=crm-settings'); ?>" class="tabs-btn " id="options">General
+        <a href="<?php echo admin_url('admin.php?page=crm-settings'); ?>" class="tabs-btn" id="options">General
             Options</a>
-        <a href="<?php echo admin_url('admin.php?page=crm-categories'); ?>" class="tabs-btn current"
+        <a href="<?php echo admin_url('admin.php?page=crm-categories'); ?>" class="tabs-btn"
             id="categories">Categories</a>
         <a href="<?php echo admin_url('admin.php?page=crm-services'); ?>" class="tabs-btn" id="services">Services</a>
-        <a href="<?php echo admin_url('admin.php?page=crm-contacts-type'); ?>" class="tabs-btn " id="types">Types</a>
+        <a href="<?php echo admin_url('admin.php?page=crm-contacts-type'); ?>" class="tabs-btn current"
+            id="types">Types</a>
     </div>
-
 
     <div class="tabs-content ">
         <p>Loading...</p>
     </div>
 
+    <div class="tabs-content">
+        <p>Loading...</p>
+    </div>
+
+    <div class="tabs-content">
+        <p>Loading...</p>
+    </div>
     <div class="tabs-content current">
 
-        <h1>Categories</h1>
+
+        <h1>Types</h1>
+        <br>
 
         <div class="all-categories">
             <form method="post" action="">
                 <div class="options">
                     <ul>
                         <li>
-                            <a class='btn' href="<?php echo admin_url('admin.php?page=new-category'); ?>">
+                            <a class='btn' href="<?php echo admin_url('admin.php?page=new-contacts-type'); ?>">
                                 <span class="iconify color-green" data-icon="material-symbols:add-circle"
                                     data-inline="false"></span>
-                                <span>Add Category</span>
+                                <span>Add Contact Type</span>
                             </a>
                         </li>
                         <li>
@@ -72,13 +79,14 @@ if (isset($_POST['submit_delete'])) {
                 </div>
 
                 <div class="scroll">
-                    <table class="wp-list-table  fixed striped">
+                    <table class="wp-list-table fixed striped">
                         <thead>
                             <tr>
                                 <th class='select'><input type="checkbox" id="select-all"></th>
                                 <th class='id'>ID</th>
+                                <th>Type</th>
                                 <th class='small'>Edit</th>
-                                <th>Category</th>
+
 
                             </tr>
                         </thead>
@@ -94,15 +102,18 @@ if (isset($_POST['submit_delete'])) {
                                         name="delete_category_ids[]" value="<?php echo esc_attr($category['id']); ?>">
                                 </td>
                                 <td class='id'><?php echo esc_html($category['id']); ?></td>
+
+                                <td><?php echo esc_html($category['contact_type_name']); ?></td>
+
                                 <td>
                                     <a class='button edit-btn'
-                                        href="<?php echo admin_url('admin.php?page=edit-category&category_id=' . $category['id']); ?>">
+                                        href="<?php echo admin_url('admin.php?page=edit-contacts-type&category_id=' . $category['id']); ?>">
                                         <span class="iconify color-orange" data-icon="material-symbols:edit-sharp"
                                             data-inline="false"></span>
                                     </a>
                                 </td>
 
-                                <td><?php echo esc_html($category['category_name']); ?></td>
+
 
                             </tr>
                             <?php endforeach;
@@ -111,8 +122,9 @@ if (isset($_POST['submit_delete'])) {
                         </tbody>
                     </table>
                 </div>
-            </form>
 
+
+            </form>
             <?php 
                 $total_pages = ceil($total_categories / $per_page);
                 if ($total_pages > 1) {
@@ -129,20 +141,10 @@ if (isset($_POST['submit_delete'])) {
                 }
             ?>
         </div>
-    </div>
 
-    <div class="tabs-content">
-        <p>Loading...</p>
-    </div>
-    <div class="tabs-content ">
-        <p>Loading...</p>
     </div>
 
 </div>
-
-
-
-
 
 
 <?php require_once plugin_dir_path(__FILE__) . '../components/footer.php'; ?>

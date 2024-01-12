@@ -32,11 +32,11 @@
 
                 </li>
                 <li>
-                    <button class="btn load-block" data-block="">
+                    <a href="<?php echo admin_url('admin.php?search_term=Future&page=crm-overview'); ?>" class="btn">
                         <span class="iconify color-orange" data-icon="material-symbols:person-outline-rounded"
                             data-inline="false"></span>
                         <span>Future</span>
-                    </button>
+                    </a>
                 </li>
                 <li>
                     <button class="btn load-block" data-block="">

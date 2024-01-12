@@ -8,7 +8,7 @@ $offset = ($current_page - 1) * $per_page;
 
 $search_term = isset($_GET['search_term']) ? sanitize_text_field($_GET['search_term']) : '';
 $fields_to_search = array(
-    'first_name', 'last_name', 'email_1', 'zip', 'Category', 'Service', 'City', 'State'
+    'first_name', 'last_name', 'email_1', 'zip', 'type', 'Category', 'Service', 'City', 'State'
 );
 
 $query = "SELECT * FROM $table_name";
@@ -176,7 +176,7 @@ if (isset($_POST['submit_delete'])) {
 
 
                         </td>
-                        <td>type</td>
+                        <td><?php echo esc_html($contact['type']); ?></td>
                         <td><?php echo esc_html($contact['image']); ?></td>
 
                         <td>

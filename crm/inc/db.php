@@ -1,7 +1,8 @@
 <?php  
 global $wpdb;
- 
+
 $table_name_contacts = $wpdb->prefix . 'crm_contacts';
+$table_name_contacts_type = $wpdb->prefix . 'crm_contacts_type'; // New table name
 $charset_collate = $wpdb->get_charset_collate();
 
 $sql_contacts = "CREATE TABLE $table_name_contacts (
@@ -12,6 +13,7 @@ $sql_contacts = "CREATE TABLE $table_name_contacts (
     gender varchar(255),
     dob date,
     bill varchar(255) NOT NULL,
+    type varchar(255) NOT NULL,
     first_name varchar(255) NOT NULL,
     last_name varchar(255) NOT NULL,
     title varchar(255) NOT NULL,
@@ -29,26 +31,31 @@ $sql_contacts = "CREATE TABLE $table_name_contacts (
     note text,
     PRIMARY KEY  (id)
 ) $charset_collate;";
- 
-$table_name_categories = $wpdb->prefix . 'crm_categories';
 
+$sql_contacts_type = "CREATE TABLE $table_name_contacts_type (
+    id mediumint(9) NOT NULL AUTO_INCREMENT,
+    contact_type_name varchar(255),   
+    PRIMARY KEY  (id)
+) $charset_collate;";
+
+$table_name_categories = $wpdb->prefix . 'crm_categories';
 $sql_categories = "CREATE TABLE $table_name_categories (
     id mediumint(9) NOT NULL AUTO_INCREMENT,
     category_name varchar(255) NOT NULL,
     PRIMARY KEY  (id)
 ) $charset_collate;";
- 
-$table_name_services = $wpdb->prefix . 'crm_services';
 
+$table_name_services = $wpdb->prefix . 'crm_services';
 $sql_services = "CREATE TABLE $table_name_services (
     id mediumint(9) NOT NULL AUTO_INCREMENT,
     service_name varchar(255) NOT NULL,
     PRIMARY KEY  (id)
 ) $charset_collate;";
- 
+
 require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
- 
+
 dbDelta($sql_contacts);
+dbDelta($sql_contacts_type);  
 dbDelta($sql_categories);
 dbDelta($sql_services);
 ?>

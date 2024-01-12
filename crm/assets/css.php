@@ -142,7 +142,8 @@
             border-top-left-radius: 4px;
             font-weight: bold;
             font-size: 11px;
-
+            text-decoration: none;
+            color: inherit;
             background: linear-gradient(to bottom, #fff 0%, #eaeaea 100%);
 
             svg {
@@ -159,10 +160,21 @@
             background-color: #fff;
             padding: 30px;
             border: solid 1px #ccc;
+
+            h1 {
+                padding-top: 0;
+            }
         }
 
         .tabs-content:not(.current) {
             display: none;
+        }
+
+        .options {
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+
+
         }
     }
 
@@ -312,6 +324,8 @@
 
 
     .form-category {
+        padding: 30px;
+
         form {}
 
         .fields {
