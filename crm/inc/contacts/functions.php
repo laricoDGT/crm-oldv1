@@ -35,6 +35,11 @@ function get_common_data() {
 
 function display_contact_form_fields($contact = null) {
     $fields = get_contact_form_fields();
+   
+     // Load JSON
+     $json_file_path = plugin_dir_path(__FILE__) . '../../assets/json/US_States_and_Cities.json';
+     $cities_data = json_decode(file_get_contents($json_file_path), true);
+ 
 
     echo '<div class="fields">';
     foreach ($fields as $key => $label) {
@@ -49,7 +54,18 @@ function display_contact_form_fields($contact = null) {
         $value = ($contact && property_exists($contact, $key)) ? esc_attr($contact->$key) : '';
         $required = ($key === 'first_name' || $key === 'last_name') ? 'required' : '';
 
-        if ($key === 'gender') {
+        if ($key === 'city' || $key === 'state') {
+            echo '<input list="' . $key . 's" name="' . $key . '" value="' . $value . '" ' . $required . '>';
+            echo '<datalist id="' . $key . 's">';
+            foreach ($cities_data as $state => $cities) {
+                echo '<option value="' . $state . '">';
+                foreach ($cities as $city) {
+                    echo '<option value="' . $city . '">';
+                }
+            }
+            echo '</datalist>';
+        } 
+        elseif ($key === 'gender') {
             echo '<select name="' . $key . '" ' . $required . '>';
             echo '<option value="male" ' . selected('male', $value, false) . '>Male</option>';
             echo '<option value="female" ' . selected('female', $value, false) . '>Female</option>';

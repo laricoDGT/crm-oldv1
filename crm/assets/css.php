@@ -378,6 +378,10 @@
                 border-radius: 0;
                 width: 100%;
                 min-width: 148px;
+
+                padding: 0 8px;
+
+                min-height: 30px;
             }
 
             &.category {
