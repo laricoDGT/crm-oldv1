@@ -198,9 +198,30 @@
             font-size: 12px;
             white-space: nowrap;
             background: linear-gradient(to bottom, #f9f9f9 0%, #e3e4e6 100%);
-            padding: 5px 10px;
+            padding: 5px 20px 5px 10px;
+            cursor: pointer;
+            position: relative;
+
+
+
+            &:after {
+                font-size: 10px;
+                position: absolute;
+                right: 5px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
         }
 
+        th.ascending::after {
+            content: "\25B2";
+
+        }
+
+        th.descending::after {
+            content: "\25BC";
+
+        }
 
         tr {
             &:hover {
