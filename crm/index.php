@@ -6,13 +6,13 @@ Version: 2.0
 Author: W.A. (PlatformBuilder)
 */
 
-
+ 
 register_activation_hook(__FILE__, 'crm_plugin_activate');
 function crm_plugin_activate() {
     require_once('inc/db.php');
 }
+ 
 
-  
 add_action('admin_menu', 'crm_plugin_menu');
 
 function crm_plugin_menu() {
@@ -20,7 +20,7 @@ function crm_plugin_menu() {
         'CRM',
         'CRM',
         'manage_options',
-        'crm-overview',
+        'crm',
         'crm_overview_page'
     );
 
@@ -29,7 +29,7 @@ function crm_plugin_menu() {
         'CRM Overview',
         'CRM Overview',
         'manage_options',
-        'crm-overview',
+        'crm',
         'crm_overview_page'
     );
 
@@ -49,6 +49,15 @@ function crm_plugin_menu() {
         'manage_options',
         'crm-categories',
         'crm_categories_page', 
+    ); 
+    
+    add_submenu_page(
+        'crm-overview',
+        'Test',
+        'CRM Test',
+        'manage_options',
+        'crm-test',
+        'crm_test_page', 
     ); 
 
     add_submenu_page(
@@ -212,6 +221,12 @@ function edit_service_page() {
     require_once plugin_dir_path(__FILE__) . 'inc/services/edit.php';
 }
 
+
+// test
+
+function crm_test_page() {  
+    require_once plugin_dir_path(__FILE__) . 'inc/test/index.php';
+}
 
 
 

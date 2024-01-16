@@ -1,10 +1,11 @@
 <?php
     
     $logo_url = plugins_url('../../assets/images/logo.png', __FILE__);
- 
+    $current_user = wp_get_current_user();
 ?>
 
 <?php require_once plugin_dir_path(__FILE__) . '../../assets/css.php'; ?>
+<?php require_once plugin_dir_path(__FILE__) . '../../assets/full-screen.php'; ?>
 
 <div class="wrap">
     <div class="crm-wrap">
@@ -25,14 +26,14 @@
                 </li>
                 <li>
 
-                    <a href="<?php echo admin_url('admin.php?page=crm-overview'); ?>" class="btn"> <span
+                    <a href="<?php echo admin_url('admin.php?page=crm'); ?>" class="btn"> <span
                             class="iconify color-green" data-icon="teenyicons:users-solid" data-inline="false"></span>
                         <span>All Contacts</span>
                     </a>
 
                 </li>
                 <li>
-                    <a href="<?php echo admin_url('admin.php?search_term=Future&page=crm-overview'); ?>" class="btn">
+                    <a href="<?php echo admin_url('admin.php?search_term=Future&page=crm'); ?>" class="btn">
                         <span class="iconify color-orange" data-icon="material-symbols:person-outline-rounded"
                             data-inline="false"></span>
                         <span>Future</span>
@@ -60,13 +61,13 @@
                     </a>
                 </li>
                 <li>
-                    <button class="btn load-block" data-block="">
+                    <a href="<?php echo wp_logout_url(); ?>" class="btn">
                         <span class="iconify" data-icon="fluent:sign-out-24-regular" data-inline="false"></span>
                         <span>Logout</span>
-                    </button>
+                    </a>
                 </li>
                 <li class='user'>
-                    <span><strong>Welcome:</strong> admin</span>
+                    <span><strong>Welcome:</strong> <?php echo $current_user->display_name; ?>!</span>
                 </li>
             </ul>
         </div>

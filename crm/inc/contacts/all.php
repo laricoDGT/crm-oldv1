@@ -34,7 +34,7 @@ if (isset($_POST['submit_delete'])) {
         $wpdb->query("DELETE FROM $table_name WHERE id IN (" . implode(',', $delete_contact_ids) . ")");
         echo '<div class="updated"><p>Contacts deleted successfully.</p></div>';
 
-        echo '<script> window.location.href = "' . admin_url('admin.php?page=crm-overview') . '";</script>';
+        echo '<script> window.location.href = "' . admin_url('admin.php?page=crm') . '";</script>';
     } else {
         echo '<div class="error"><p>Please select at least one contact to delete.</p></div>';
     }
@@ -45,7 +45,7 @@ if (isset($_POST['submit_delete'])) {
 <div class="all-contacts">
     <form method="get" action="">
         <input placeholder='Enter search term' type="search" name="search_term">
-        <input type="hidden" name="page" value="crm-overview">
+        <input type="hidden" name="page" value="crm">
         <button type="submit">
             <span class="iconify color-green" data-icon="material-symbols:search" data-inline="false"></span>
         </button>
@@ -80,6 +80,7 @@ if (isset($_POST['submit_delete'])) {
                         <th class='id'>ID</th>
                         <th class='small'>Edit</th>
                         <th class='small'>Mail</th>
+                        <th class='small'>WA</th>
                         <th class='small'>SMS</th>
                         <th class=''>Papers</th>
                         <th class='small'>Bill</th>
@@ -141,6 +142,17 @@ if (isset($_POST['submit_delete'])) {
                                     $phone_number = str_replace(['.', '-', ' '], '', $contact['phone_mobile']); 
                                     echo '<a target="_blank" class="button" href="https://wa.me/' . esc_html($phone_number) . '">
                                             <span class="iconify" data-icon="logos:whatsapp-icon" data-inline="false"></span>
+                                        </a>';
+                                }
+                            ?>
+
+                        </td>
+                        <td>
+                            <?php
+                                if (!empty($contact['phone_mobile'])) { 
+                                    $phone_number = str_replace(['.', '-', ' '], '', $contact['phone_mobile']); 
+                                    echo '<a target="_blank" class="button" href="sms:+' . esc_html($phone_number) . '?body=">
+                                            <span class="iconify" data-icon="mdi:cellphone" data-inline="false"></span>
                                         </a>';
                                 }
                             ?>
@@ -252,7 +264,7 @@ if (isset($_POST['submit_delete'])) {
         if ($total_pages > 1) {
             echo '<div class="pagination">';
             echo paginate_links(array(
-                'base' => add_query_arg(array('paged' => '%#%', 'search_term' => $search_term, 'per_page' => $per_page, 'page' => 'crm-overview')),
+                'base' => add_query_arg(array('paged' => '%#%', 'search_term' => $search_term, 'per_page' => $per_page, 'page' => 'crm')),
                 'format' => '',
                 'prev_text' => __('&laquo;'),
                 'next_text' => __('&raquo;'),
@@ -275,7 +287,7 @@ if (isset($_POST['submit_delete'])) {
 
 <script>
 function changePerPage(value) {
-    window.location.href = "<?php echo admin_url('admin.php?page=crm-overview&per_page='); ?>" + value;
+    window.location.href = "<?php echo admin_url('admin.php?page=crm&per_page='); ?>" + value;
 }
 
 

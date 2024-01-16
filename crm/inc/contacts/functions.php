@@ -169,7 +169,7 @@ function display_message($type, $message) {
 function redirect_to_crm_overview() {
     echo '<script>
         setTimeout(function() {
-            window.location.href = "' . admin_url('admin.php?page=crm-overview') . '";
+            window.location.href = "' . admin_url('admin.php?page=crm') . '";
         }, 1000);
     </script>';
 }

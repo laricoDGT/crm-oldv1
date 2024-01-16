@@ -21,7 +21,7 @@ if (isset($_POST['submit_delete'])) {
         $wpdb->query("DELETE FROM $table_name WHERE id IN (" . implode(',', $delete_contact_ids) . ")");
         echo '<div class="updated"><p>Contacts deleted successfully.</p></div>';
 
-        echo '<script> window.location.href = "' . admin_url('admin.php?page=crm-overview') . '";</script>';
+        echo '<script> window.location.href = "' . admin_url('admin.php?page=crm') . '";</script>';
     } else {
         echo '<div class="error"><p>Please select at least one contact to delete.</p></div>';
     }
