@@ -25,7 +25,7 @@ function crm_plugin_menu() {
     );
 
     add_submenu_page(
-        'crm-overview',
+        'crm',
         'CRM Overview',
         'CRM Overview',
         'manage_options',
@@ -34,7 +34,7 @@ function crm_plugin_menu() {
     );
 
     add_submenu_page(
-        'crm-overview',
+        'crm',
         'New Contact',
         'New Contact',
         'manage_options',
@@ -43,7 +43,7 @@ function crm_plugin_menu() {
     );
  
     add_submenu_page(
-        'crm-overview',
+        'crm',
         'CRM Categories',
         'CRM Categories',
         'manage_options',
@@ -52,7 +52,7 @@ function crm_plugin_menu() {
     ); 
     
     add_submenu_page(
-        'crm-overview',
+        'crm',
         'Test',
         'CRM Test',
         'manage_options',
@@ -61,7 +61,7 @@ function crm_plugin_menu() {
     ); 
 
     add_submenu_page(
-        'crm-overview',
+        'crm',
         'CRM Services',
         'CRM Services',
         'manage_options',
@@ -70,7 +70,7 @@ function crm_plugin_menu() {
     ); 
 
     add_submenu_page(
-        'crm-overview',
+        'crm',
         'CRM Settings',
         'CRM Settings',
         'manage_options',
@@ -80,7 +80,7 @@ function crm_plugin_menu() {
 
 
     add_submenu_page(
-        'crm-overview',
+        'crm',
         '',
         '',
         'manage_options',
@@ -89,7 +89,7 @@ function crm_plugin_menu() {
     );
 
     add_submenu_page(
-        'crm-overview',
+        'crm',
         '',
         '',
         'manage_options',
@@ -97,7 +97,7 @@ function crm_plugin_menu() {
         'new_category_page'
     );
     add_submenu_page(
-        'crm-overview',
+        'crm',
         '',
         '',
         'manage_options',
@@ -106,7 +106,7 @@ function crm_plugin_menu() {
     );
     
     add_submenu_page(
-        'crm-overview',
+        'crm',
         '',
         '',
         'manage_options',
@@ -114,7 +114,7 @@ function crm_plugin_menu() {
         'new_service_page'
     );
     add_submenu_page(
-        'crm-overview',
+        'crm',
         '',
         '',
         'manage_options',
@@ -123,7 +123,7 @@ function crm_plugin_menu() {
     );
 
     add_submenu_page(
-        'crm-overview',
+        'crm',
         '',
         '',
         'manage_options',
@@ -132,7 +132,7 @@ function crm_plugin_menu() {
     );
 
     add_submenu_page(
-        'crm-overview',
+        'crm',
         '',
         '',
         'manage_options',
@@ -141,7 +141,7 @@ function crm_plugin_menu() {
     );
 
     add_submenu_page(
-        'crm-overview',
+        'crm',
         '',
         '',
         'manage_options',
