@@ -413,9 +413,11 @@
                 min-width: 126px;
             }
 
+
+
             select,
             textarea,
-            input {
+            input:not([type="checkbox"]):not([type="radio"]) {
                 border: solid 1px #b5b8c8;
                 border-radius: 0;
                 width: 100%;
@@ -426,29 +428,107 @@
                 min-height: 30px;
             }
 
-            &.category {
-                label {
-                    width: auto;
-                }
 
-                select {
-                    max-width: 100%;
-                }
-            }
         }
 
         .large,
         .slogan,
         .note,
-        .category,
         .image {
             grid-column: span 4 / span 4;
         }
 
-        .textarea {
+        .note {
             textarea {
                 width: 100%;
-                height: 200px;
+                height: 100px;
+            }
+        }
+
+        .dropdown {
+            margin: 0;
+            padding: 0;
+
+            li {
+                position: relative;
+            }
+
+            >li {
+                border: solid 1px #b5b8c8;
+                border-radius: 0;
+                width: 100%;
+                min-width: 148px;
+                padding: 0 8px;
+                min-height: 30px;
+                position: relative;
+                box-sizing: border-box;
+                margin-bottom: 0;
+
+                >a {
+                    min-height: 28px;
+                    display: grid;
+                    align-content: center;
+                }
+
+
+                &:after {
+                    content: '';
+                    border: solid #9a9a9a;
+                    border-width: 0 2px 2px 0;
+                    display: inline-flex;
+                    padding: 3px;
+                    transform: rotate(45deg);
+                    right: 8px;
+                    position: absolute;
+                    top: 7px;
+                }
+
+                &:hover {
+                    .submenu {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+
+            label {
+                justify-content: initial;
+                text-align: inherit;
+                min-width: auto;
+                align-items: center;
+            }
+
+            .submenu {
+                position: absolute;
+                left: 0;
+                top: 0%;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 0 6px #00000045;
+                padding: 12px;
+                max-height: 150px;
+                overflow: auto;
+                transition: all 0.3s ease-in-out;
+                z-index: 3;
+
+                opacity: 0;
+                visibility: hidden;
+
+                &::-webkit-scrollbar {
+                    width: 10px;
+                    height: 10px;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: #eee;
+                    border-radius: 8px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: #333;
+                    border-radius: 8px;
+                }
+
             }
         }
 

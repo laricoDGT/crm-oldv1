@@ -112,12 +112,21 @@ function display_contact_form_fields($contact = null) {
             echo '<textarea name="' . $key . '" ' . $required . '>' . $value . '</textarea>';
         } elseif ($key === 'category') {
             $categories = get_categories_from_database();
-            echo '<select name="' . $key . '[]" ' . $required . ' multiple>';
+            // echo '<select name="' . $key . '[]" ' . $required . ' multiple>';
+            // foreach ($categories as $category) {
+            //     $selected = in_array($category->category_name, explode(',', $value)) ? 'selected' : '';
+            //     echo "<option value='{$category->category_name}' $selected>{$category->category_name}</option>";
+            // }
+            // echo '</select>';
+
+            echo '<ul class="dropdown"><li><a href="#">Select Category</a>';
+            echo '<ul class="submenu">';
             foreach ($categories as $category) {
-                $selected = in_array($category->category_name, explode(',', $value)) ? 'selected' : '';
-                echo "<option value='{$category->category_name}' $selected>{$category->category_name}</option>";
+                $checked = in_array($category->category_name, explode(',', $value)) ? 'checked' : '';
+                echo "<li><label><input type='checkbox' name='{$key}[]' value='{$category->category_name}' $checked> {$category->category_name}</label></li>";
             }
-            echo '</select>';
+            echo '</ul>';
+            echo '</li></ul>';
         }else {
             
             echo '<input type="' . ($key === 'email_1' ? 'email' : ($key === 'since' ? 'date' : ($key === 'dob' ? 'date' : 'text'))) . '" name="' . $key . '" value="' . $value . '" ' . $required . '>';
