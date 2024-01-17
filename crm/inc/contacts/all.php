@@ -188,7 +188,16 @@ if (isset($_POST['submit_delete'])) {
 
 
                         </td>
-                        <td><?php echo esc_html($contact['type']); ?></td>
+                        <td>
+
+
+
+                            <a class=''
+                                href="<?php echo admin_url('admin.php?page=edit-contact&contact_id=' . $contact['id']); ?>">
+                                <?php echo esc_html($contact['type']); ?>
+                            </a>
+
+                        </td>
                         <td>
 
                             <?php
@@ -219,7 +228,12 @@ if (isset($_POST['submit_delete'])) {
                             </span>
                         </td>
 
-                        <td><?php echo esc_html($contact['first_name']); ?></td>
+                        <td>
+                            <a class=''
+                                href="<?php echo admin_url('admin.php?page=edit-contact&contact_id=' . $contact['id']); ?>">
+                                <?php echo esc_html($contact['first_name']); ?>
+                            </a>
+                        </td>
                         <td><?php echo esc_html($contact['last_name']); ?></td>
                         <td><?php echo esc_html($contact['title']); ?></td>
                         <td><?php echo esc_html($contact['category']); ?></td>
@@ -285,6 +299,10 @@ if (isset($_POST['submit_delete'])) {
 
 </div>
 
+
+
+
+
 <script>
 function changePerPage(value) {
     window.location.href = "<?php echo admin_url('admin.php?page=crm&per_page='); ?>" + value;
@@ -330,5 +348,11 @@ document.getElementById('select-all').addEventListener('change', function() {
             return $(row).children('td').eq(index).text()
         }
     })
+
+
+
+
+
+
 })(jQuery);
 </script>

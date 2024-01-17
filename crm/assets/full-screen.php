@@ -16,4 +16,11 @@ html.wp-toolbar {
 #wpfooter {
     display: none;
 }
+
+
+#editDialog {
+    #adminmenumain {
+        display: none;
+    }
+}
 </style>

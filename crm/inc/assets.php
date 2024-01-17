@@ -6,10 +6,10 @@ function enqueue_crm_scripts_styles() {
         wp_enqueue_style('crm-style', plugin_dir_url(__FILE__) . '../assets/css/crm.css', array(), null);
  
         wp_enqueue_script('external-iconify', 'https://code.iconify.design/3/3.1.0/iconify.min.js', array(), null, true);
+        // wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), null, false);
     }
 }
 
- 
 add_action('admin_enqueue_scripts', 'enqueue_crm_scripts_styles');
 
  
