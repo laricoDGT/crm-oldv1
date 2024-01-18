@@ -22,10 +22,20 @@ if (isset($_POST['submit_contact'])) {
     <h1>Add New Contact</h1>
     <form method="post" action="">
         <?php display_contact_form_fields(); ?>
-        <button type="submit" name="submit_contact" class="button button-primary">
-            <span class="iconify" data-icon="ion:ios-save" data-inline="false"></span>
-            <span>Save</span>
-        </button>
+
+
+        <div class="actions">
+            <button type="submit" name="submit_edit" class="button button-primary">
+                <span class="iconify" data-icon="ion:ios-save" data-inline="false"></span>
+                <span>Update</span>
+            </button>
+
+
+            <a href="<?php echo admin_url('admin.php?page=crm'); ?>" class="button ">
+                <span class="iconify" data-icon="ion:arrow-back-circle-outline" data-inline="false"></span>
+                <span>Back</span>
+            </a>
+        </div>
     </form>
 </div>
 

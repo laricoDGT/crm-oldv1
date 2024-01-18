@@ -26,15 +26,41 @@ if (isset($_POST['submit_edit'])) {
 
     if ($contact) {
         ?>
-<div class="form add-edit-contact">
+
+
+
+<?php
+$parametrosClases = array('to_first_name', 'to_last_name', 'to_type', 'to_email', 'to_phone', 'to_address', 'to_city', 'to_state', 'to_zip', 'to_country', 'to_company', 'to_job_title', 'to_website', 'to_notes');
+$clases = array(); 
+foreach ($parametrosClases as $parametro) {
+    if (isset($_GET[$parametro])) {
+        $clases[] = $parametro;
+    }
+} 
+$clasesString = implode(' ', $clases);
+?>
+
+<div class="form add-edit-contact <?php echo $clasesString; ?>">
+
     <h1>Edit Contact</h1>
     <form method="post" action="">
         <input type="hidden" name="contact_id" value="<?php echo esc_attr($contact->id); ?>">
         <?php display_contact_form_fields($contact); ?>
-        <button type="submit" name="submit_edit" class="button button-primary">
-            <span class="iconify" data-icon="ion:ios-save" data-inline="false"></span>
-            <span>Update</span>
-        </button>
+
+
+        <div class="actions">
+            <button type="submit" name="submit_edit" class="button button-primary">
+                <span class="iconify" data-icon="ion:ios-save" data-inline="false"></span>
+                <span>Update</span>
+            </button>
+
+
+            <a href="<?php echo admin_url('admin.php?page=crm'); ?>" class="button ">
+                <span class="iconify" data-icon="ion:arrow-back-circle-outline" data-inline="false"></span>
+                <span>Back</span>
+            </a>
+        </div>
+
     </form>
 </div>
 <?php

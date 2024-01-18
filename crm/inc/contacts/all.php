@@ -189,11 +189,8 @@ if (isset($_POST['submit_delete'])) {
 
                         </td>
                         <td>
-
-
-
                             <a class=''
-                                href="<?php echo admin_url('admin.php?page=edit-contact&contact_id=' . $contact['id']); ?>">
+                                href="<?php echo admin_url('admin.php?page=edit-contact&contact_id=' . $contact['id'] . '&to_type'); ?>">
                                 <?php echo esc_html($contact['type']); ?>
                             </a>
 
@@ -229,12 +226,19 @@ if (isset($_POST['submit_delete'])) {
                         </td>
 
                         <td>
-                            <a class=''
-                                href="<?php echo admin_url('admin.php?page=edit-contact&contact_id=' . $contact['id']); ?>">
+                            <a
+                                href="<?php echo admin_url('admin.php?page=edit-contact&contact_id=' . $contact['id'] . '&to_first_name'); ?>">
                                 <?php echo esc_html($contact['first_name']); ?>
                             </a>
                         </td>
-                        <td><?php echo esc_html($contact['last_name']); ?></td>
+
+                        <td>
+                            <a
+                                href="<?php echo admin_url('admin.php?page=edit-contact&contact_id=' . $contact['id'] . '&to_last_name'); ?>">
+                                <?php echo esc_html($contact['last_name']); ?>
+                            </a>
+                        </td>
+
                         <td><?php echo esc_html($contact['title']); ?></td>
                         <td><?php echo esc_html($contact['category']); ?></td>
                         <td><?php echo esc_html($contact['service']); ?></td>
