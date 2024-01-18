@@ -70,6 +70,8 @@
             padding: 0;
         }
 
+
+
         ul {
             display: inline-flex;
             align-items: center;
@@ -322,6 +324,15 @@
             border-top-right-radius: 6px;
             border-bottom: 0;
             margin-bottom: 0;
+
+            ul {
+                >li {
+                    border-right: solid 1px #d1d1d1;
+                    padding-right: 4px;
+                }
+            }
+
+
         }
 
         #new-contact:not(.active) {

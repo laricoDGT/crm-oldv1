@@ -62,49 +62,62 @@ if (isset($_POST['submit_delete'])) {
                     </a>
                 </li>
                 <li>
-
                     <button class='btn' type="submit" name="submit_delete">
                         <span class="iconify color-red" data-icon="material-symbols:delete-forever"
                             data-inline="false"></span>
-                        <span>Delete</span> </button>
+                        <span>Delete</span>
+                    </button>
+                </li>
+                <li>
+                    <a class='btn export-to-pdf'>
+                        <span class="iconify" data-icon="teenyicons:pdf-solid" data-inline="false"
+                            data-width="16"></span>
+                        <span>Export to PDF</span>
+                    </a>
+                </li>
+                <li>
+                    <a class='btn export-to-csv'>
+                        <span class="iconify color-green" data-icon="teenyicons:csv-solid" data-inline="false"
+                            data-width="16"></span>
+                        <span>Export to CSV</span>
+                    </a>
                 </li>
             </ul>
 
         </div>
 
         <div class="scroll">
-            <table class="wp-list-table fixed striped">
+            <table id='crm-table' class="wp-list-table fixed striped">
                 <thead>
                     <tr>
-                        <th class='select'><input type="checkbox" id="select-all"></th>
-                        <th class='id'>ID</th>
-                        <th class='small'>Edit</th>
-                        <th class='small'>Mail</th>
-                        <th class='small'>WA</th>
-                        <th class='small'>SMS</th>
-                        <th class=''>Papers</th>
-                        <th class='small'>Bill</th>
+                        <th class='no-csv select'><input type="checkbox" id="select-all"></th>
+                        <th class='no-csv id'>ID</th>
+                        <th class='no-csv edit small'>Edit</th>
+                        <th class='no-csv mail small'>Mail</th>
+                        <th class='no-csv wa small'>WA</th>
+                        <th class='no-csv sms small'>SMS</th>
+                        <th class='no-csv papers'>Papers</th>
+                        <th class='no-csv small'>Bill</th>
                         <th class='medium'>Type</th>
-                        <th class='avatar'>Image</th>
-                        <th>Gender</th>
-
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th>Service</th>
-                        <th>Company</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Zip</th>
-                        <th>Phone Work</th>
-                        <th>Phone Mobile</th>
-                        <th>Email</th>
-                        <th>Web</th>
-                        <th>Slogan</th>
-                        <th>DOB</th>
-                        <th>Since</th>
-                        <th>Registration date</th>
+                        <th class='no-csv avatar'>Image</th>
+                        <th class='gender'>Gender</th>
+                        <th class='firstname'>First Name</th>
+                        <th class='lastname'>Last Name</th>
+                        <th class='title'>Title</th>
+                        <th class='category'>Category</th>
+                        <th class='no-csv service'>Service</th>
+                        <th class='company'>Company</th>
+                        <th class='city'>City</th>
+                        <th class='state'>State</th>
+                        <th class='zip'>Zip</th>
+                        <th class='phonework'>Phone Work</th>
+                        <th class='phonemobile'>Phone Mobile</th>
+                        <th class='email'>Email</th>
+                        <th class='web'>Web</th>
+                        <th class='no-csv slogan'>Slogan</th>
+                        <th class='dob'>DOB</th>
+                        <th class='no-csv since'>Since</th>
+                        <th class='no-csv registrationdate'>Registration date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -115,17 +128,17 @@ if (isset($_POST['submit_delete'])) {
                         foreach ($contacts as $contact) :
                     ?>
                     <tr>
-                        <td class='select'><input type="checkbox" class="delete-checkbox" name="delete_contact_ids[]"
-                                value="<?php echo esc_attr($contact['id']); ?>"></td>
-                        <td class='id'><?php echo esc_html($contact['id']); ?></td>
-                        <td>
+                        <td class='no-csv select'><input type="checkbox" class="delete-checkbox"
+                                name="delete_contact_ids[]" value="<?php echo esc_attr($contact['id']); ?>"></td>
+                        <td class='no-csv id'><?php echo esc_html($contact['id']); ?></td>
+                        <td class='no-csv'>
                             <a class='button edit-btn'
                                 href="<?php echo admin_url('admin.php?page=edit-contact&contact_id=' . $contact['id']); ?>">
                                 <span class="iconify color-orange" data-icon="material-symbols:edit-sharp"
                                     data-inline="false"></span>
                             </a>
                         </td>
-                        <td>
+                        <td class='no-csv'>
 
                             <?php 
                                 if (!empty($contact['email_1'])) {
@@ -136,7 +149,7 @@ if (isset($_POST['submit_delete'])) {
                             ?>
 
                         </td>
-                        <td>
+                        <td class='no-csv'>
                             <?php
                                 if (!empty($contact['phone_mobile'])) { 
                                     $phone_number = str_replace(['.', '-', ' '], '', $contact['phone_mobile']); 
@@ -147,7 +160,7 @@ if (isset($_POST['submit_delete'])) {
                             ?>
 
                         </td>
-                        <td>
+                        <td class='no-csv'>
                             <?php
                                 if (!empty($contact['phone_mobile'])) { 
                                     $phone_number = str_replace(['.', '-', ' '], '', $contact['phone_mobile']); 
@@ -158,13 +171,13 @@ if (isset($_POST['submit_delete'])) {
                             ?>
 
                         </td>
-                        <td>
+                        <td class='no-csv'>
                             <a class='button' href="">
                                 <span class="iconify color-yellow" data-icon="material-symbols:folder-open-rounded"
                                     data-inline="false"></span>
                             </a>
                         </td>
-                        <td>
+                        <td class='no-csv'>
                             <?php
                             $bill = esc_html($contact['bill']);
                             $color_class = '';
@@ -195,7 +208,7 @@ if (isset($_POST['submit_delete'])) {
                             </a>
 
                         </td>
-                        <td>
+                        <td class='no-csv'>
 
                             <?php
                                 $image_url = esc_html($contact['image']); 
@@ -241,7 +254,7 @@ if (isset($_POST['submit_delete'])) {
 
                         <td><?php echo esc_html($contact['title']); ?></td>
                         <td><?php echo esc_html($contact['category']); ?></td>
-                        <td><?php echo esc_html($contact['service']); ?></td>
+                        <td class='no-csv'><?php echo esc_html($contact['service']); ?></td>
                         <td><?php echo esc_html($contact['company']); ?></td>
                         <td><?php echo esc_html($contact['city']); ?></td>
                         <td><?php echo esc_html($contact['state']); ?></td>
@@ -250,10 +263,10 @@ if (isset($_POST['submit_delete'])) {
                         <td><?php echo esc_html($contact['phone_mobile']); ?></td>
                         <td><?php echo esc_html($contact['email_1']); ?></td>
                         <td><?php echo esc_html($contact['web']); ?></td>
-                        <td><?php echo esc_html($contact['slogan']); ?></td>
+                        <td class='no-csv'><?php echo esc_html($contact['slogan']); ?></td>
                         <td><?php echo esc_html($contact['dob']); ?></td>
-                        <td><?php echo esc_html($contact['since']); ?></td>
-                        <td><?php echo esc_html($contact['registration_date']); ?></td>
+                        <td class='no-csv'><?php echo esc_html($contact['since']); ?></td>
+                        <td class='no-csv'><?php echo esc_html($contact['registration_date']); ?></td>
                     </tr>
                     <?php endforeach; } ?>
                 </tbody>
@@ -324,7 +337,7 @@ document.getElementById('select-all').addEventListener('change', function() {
 
 (function($) {
     $(document).ready(function() {
-        $('.wp-list-table th').click(function() {
+        $('.wp-list-table th:not(.select)').click(function() {
             var table = $(this).parents('table').eq(0)
             var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
             this.asc = !this.asc
@@ -354,9 +367,69 @@ document.getElementById('select-all').addEventListener('change', function() {
     })
 
 
-
-
-
-
 })(jQuery);
+</script>
+
+
+
+
+<!-- export to pdf -->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+
+
+
+
+});
+</script>
+
+
+<!-- Export to CSV -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const csvButton = document.querySelector('.export-to-csv');
+    const csvTable = document.querySelector('#crm-table');
+
+    csvButton.addEventListener('click', () => {
+        const csv = [];
+        const rows = document.querySelectorAll("table tr");
+
+        for (const row of rows) {
+            const rowData = [];
+            const columns = row.querySelectorAll("th, td");
+
+            for (const [index, column] of columns.entries()) {
+
+                if (!column.classList.contains('no-csv')) {
+
+                    if ((index + 1) % 3 === 0) {
+                        rowData.push('"' + column.innerText + '"');
+                    } else {
+                        rowData.push(column.innerText);
+                    }
+                }
+            }
+            csv.push(rowData.join(","));
+        }
+
+        downloadCSV(csv.join("\n"), 'crm-contacts.csv');
+    });
+
+    function downloadCSV(csv, filename) {
+        const csvFile = new Blob([csv], {
+            type: "text/csv"
+        });
+
+        const downloadLink = document.createElement("a");
+        downloadLink.download = filename;
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+    }
+
+});
 </script>
