@@ -378,9 +378,24 @@ document.getElementById('select-all').addEventListener('change', function() {
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
+    function printData() {
+        var divToPrint = document.getElementById("crm-table").cloneNode(true);
 
+        // Filtrar las celdas con la clase ".no-csv"
+        var cellsToExclude = divToPrint.querySelectorAll('.no-csv');
+        cellsToExclude.forEach(function(cell) {
+            cell.parentNode.removeChild(cell);
+        });
 
+        var newWin = window.open("");
+        newWin.document.write(divToPrint.outerHTML);
+        newWin.print();
+        newWin.close();
+    }
 
+    document.querySelector('.export-to-pdf').addEventListener('click', function() {
+        printData();
+    });
 
 });
 </script>
