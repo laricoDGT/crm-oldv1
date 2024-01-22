@@ -98,7 +98,7 @@ if (isset($_POST['submit_delete'])) {
                         <th class='no-csv sms small'>SMS</th>
                         <th class='no-csv papers'>Papers</th>
                         <th class='no-csv small'>Bill</th>
-                        <th class='medium'>Type</th>
+                        <th class='medium'>Stage</th>
                         <th class='no-csv avatar'>Image</th>
                         <th class='gender'>Gender</th>
                         <th class='firstname'>First Name</th>

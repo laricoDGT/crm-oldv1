@@ -17,11 +17,11 @@ if (isset($_POST['submit_delete'])) {
 
     if (!empty($delete_category_ids)) {
         $wpdb->query("DELETE FROM $table_name WHERE id IN (" . implode(',', $delete_category_ids) . ")");
-        echo '<div class="updated"><p>Contact Type deleted successfully.</p></div>';
+        echo '<div class="updated"><p>Contact Stage deleted successfully.</p></div>';
 
         echo '<script> window.location.href = "' . admin_url('admin.php?page=crm-contacts-type') . '";</script>';
     } else {
-        echo '<div class="error"><p>Please select at least one Type to delete.</p></div>';
+        echo '<div class="error"><p>Please select at least one Stage to delete.</p></div>';
     }
 }
 ?>
@@ -37,7 +37,7 @@ if (isset($_POST['submit_delete'])) {
             id="categories">Categories</a>
         <a href="<?php echo admin_url('admin.php?page=crm-services'); ?>" class="tabs-btn" id="services">Services</a>
         <a href="<?php echo admin_url('admin.php?page=crm-contacts-type'); ?>" class="tabs-btn current"
-            id="types">Types</a>
+            id="types">Stages</a>
     </div>
 
     <div class="tabs-content ">
@@ -54,7 +54,7 @@ if (isset($_POST['submit_delete'])) {
     <div class="tabs-content current">
 
 
-        <h1>Types</h1>
+        <h1>Stage</h1>
         <br>
 
         <div class="all-categories">
@@ -65,7 +65,7 @@ if (isset($_POST['submit_delete'])) {
                             <a class='btn' href="<?php echo admin_url('admin.php?page=new-contacts-type'); ?>">
                                 <span class="iconify color-green" data-icon="material-symbols:add-circle"
                                     data-inline="false"></span>
-                                <span>Add Contact Type</span>
+                                <span>Add Contact Stage</span>
                             </a>
                         </li>
                         <li>

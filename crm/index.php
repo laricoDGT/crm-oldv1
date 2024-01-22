@@ -82,7 +82,7 @@ function crm_plugin_menu() {
     add_submenu_page(
         'crm',
         '',
-        '',
+        'CRM Stage',
         'manage_options',
         'crm-contacts-type',
         'crm_contacts_type_page', 
@@ -181,15 +181,15 @@ function edit_contasearch_pagect_page() {
 // Contacts Type
 
 function crm_contacts_type_page() {  
-    require_once plugin_dir_path(__FILE__) . 'inc/contacts-type/all.php';
+    require_once plugin_dir_path(__FILE__) . 'inc/contacts-stage/all.php';
 }
 
 function new_contacts_type_page() {  
-    require_once plugin_dir_path(__FILE__) . 'inc/contacts-type/add.php';
+    require_once plugin_dir_path(__FILE__) . 'inc/contacts-stage/add.php';
 }
 
 function edit_contacts_type_page() { 
-    require_once plugin_dir_path(__FILE__) . 'inc/contacts-type/edit.php';
+    require_once plugin_dir_path(__FILE__) . 'inc/contacts-stage/edit.php';
 }
 
 // Categories

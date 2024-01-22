@@ -25,9 +25,9 @@ if (isset($_POST['submit_contact'])) {
 
 
         <div class="actions">
-            <button type="submit" name="submit_edit" class="button button-primary">
+            <button type="submit" name="submit_contact" class="button button-primary">
                 <span class="iconify" data-icon="ion:ios-save" data-inline="false"></span>
-                <span>Update</span>
+                <span>Save</span>
             </button>
 
 

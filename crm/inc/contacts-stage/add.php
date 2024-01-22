@@ -11,7 +11,7 @@ if (isset($_POST['contact_type_submit'])) {
         $table_name = $wpdb->prefix . 'crm_contacts_type';
 
         $wpdb->insert($table_name, $data);
-        display_message('updated', 'Contact Type added successfully.');
+        display_message('updated', 'Contact Stae added successfully.');
         redirect_to_crm_overview();
     } else {
         display_message('error', 'Please complete all mandatory fields.');
@@ -19,7 +19,7 @@ if (isset($_POST['contact_type_submit'])) {
 }
 ?>
 <div class="form form-category add-edit-category">
-    <h1>Add New Contact Type</h1>
+    <h1>Add New Contact Stage</h1>
     <form method="post" action="">
         <?php display_contact_type_form_fields(); ?>
         <button type="submit" name="contact_type_submit" class="button button-primary">

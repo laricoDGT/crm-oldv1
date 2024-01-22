@@ -143,7 +143,7 @@ function display_contact_form_fields($contact = null) {
 function get_contact_form_fields() {
     return [
         
-        'type' => 'Type',
+        'type' => 'Stage',
         'first_name' => 'First Name',
         'last_name' => 'Last Name',
         'gender' => 'Gender',

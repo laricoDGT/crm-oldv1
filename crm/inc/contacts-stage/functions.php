@@ -33,7 +33,7 @@ function display_contact_type_form_fields($cat = null) {
 
 function get_contact_type_form_fields() {
     return [
-        'contact_type_name' => 'Contact Type',
+        'contact_type_name' => 'Contact Stage',
     ];
 }
 
