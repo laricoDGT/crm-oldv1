@@ -584,4 +584,26 @@
         color: #fff;
     }
 }
+
+
+
+/* Importer */
+.wp-list-table.importer-table {
+    border: solid 1px #ccc;
+
+    tbody {
+        td {
+            padding: 6px;
+        }
+    }
+
+}
+
+.importer-form {
+    padding: 12px;
+    border: solid 1px #ccc;
+    max-width: fit-content;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
 </style>

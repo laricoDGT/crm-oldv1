@@ -38,7 +38,7 @@ if (isset($_POST['submit_delete'])) {
         <a href="<?php echo admin_url('admin.php?page=crm-categories'); ?>" class="tabs-btn current"
             id="categories">Categories</a>
         <a href="<?php echo admin_url('admin.php?page=crm-services'); ?>" class="tabs-btn" id="services">Services</a>
-        <a href="<?php echo admin_url('admin.php?page=crm-contacts-type'); ?>" class="tabs-btn " id="types">Types</a>
+        <a href="<?php echo admin_url('admin.php?page=crm-contacts-type'); ?>" class="tabs-btn " id="types">Stages</a>
     </div>
 
 

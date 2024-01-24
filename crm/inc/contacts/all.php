@@ -82,6 +82,15 @@ if (isset($_POST['submit_delete'])) {
                         <span>Export to CSV</span>
                     </a>
                 </li>
+
+                <li>
+
+                    <a class='btn' href="<?php echo admin_url('admin.php?page=crm-contact-importer'); ?>">
+                        <span class="iconify color-green" data-icon="fa6-solid:file-import" data-inline="false"
+                            data-width="16"></span>
+                        <span>Import Contacts (CSV)</span>
+                    </a>
+                </li>
             </ul>
 
         </div>

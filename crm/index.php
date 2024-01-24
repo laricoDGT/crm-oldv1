@@ -51,14 +51,7 @@ function crm_plugin_menu() {
         'crm_categories_page', 
     ); 
     
-    add_submenu_page(
-        'crm',
-        'Test',
-        'CRM Test',
-        'manage_options',
-        'crm-test',
-        'crm_test_page', 
-    ); 
+    
 
     add_submenu_page(
         'crm',
@@ -87,6 +80,16 @@ function crm_plugin_menu() {
         'crm-contacts-type',
         'crm_contacts_type_page', 
     );
+
+    add_submenu_page(
+        'crm',
+        'Test',
+        'Contact Importer',
+        'manage_options',
+        'crm-contact-importer',
+        'crm_contact_importer_page', 
+       
+    ); 
 
     add_submenu_page(
         'crm',
@@ -222,10 +225,10 @@ function edit_service_page() {
 }
 
 
-// test
+// Contact Importer
 
-function crm_test_page() {  
-    require_once plugin_dir_path(__FILE__) . 'inc/test/index.php';
+function crm_contact_importer_page() {  
+    require_once plugin_dir_path(__FILE__) . 'inc/importer/index.php';
 }
 
 

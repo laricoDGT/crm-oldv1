@@ -1,10 +1,8 @@
 <?php  
 global $wpdb;
-
-$table_name_contacts = $wpdb->prefix . 'crm_contacts';
-$table_name_contacts_type = $wpdb->prefix . 'crm_contacts_type'; // New table name
 $charset_collate = $wpdb->get_charset_collate();
 
+$table_name_contacts = $wpdb->prefix . 'crm_contacts'; 
 $sql_contacts = "CREATE TABLE $table_name_contacts (
     id mediumint(9) NOT NULL AUTO_INCREMENT,
     image varchar(255),
@@ -32,6 +30,7 @@ $sql_contacts = "CREATE TABLE $table_name_contacts (
     PRIMARY KEY  (id)
 ) $charset_collate;";
 
+$table_name_contacts_type = $wpdb->prefix . 'crm_contacts_type'; 
 $sql_contacts_type = "CREATE TABLE $table_name_contacts_type (
     id mediumint(9) NOT NULL AUTO_INCREMENT,
     contact_type_name varchar(255),   

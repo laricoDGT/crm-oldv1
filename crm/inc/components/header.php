@@ -18,12 +18,7 @@
         </header>
         <div class="options">
             <ul>
-                <li>
-                    <a href="<?php echo admin_url('admin.php?page=crm-settings'); ?>" class="btn">
-                        <span class="iconify" data-icon="material-symbols:settings"></span>
-                        <span>CRM Settings</span>
-                    </a>
-                </li>
+
                 <li>
 
                     <a href="<?php echo admin_url('admin.php?page=crm'); ?>" class="btn"> <span
@@ -39,13 +34,13 @@
                         <span>Future</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <button class="btn load-block" data-block="">
                         <span class="iconify color-red" data-icon="material-symbols:person-outline-rounded"
                             data-inline="false"></span>
                         <span>Pipeline</span>
                     </button>
-                </li>
+                </li> -->
                 <li>
                     <button class="btn load-block" data-block="">
                         <span class="iconify color-yellow" data-icon="material-symbols-light:folder-open"
@@ -60,6 +55,14 @@
                         <span>Categories</span>
                     </a>
                 </li>
+
+                <li>
+                    <a href="<?php echo admin_url('admin.php?page=crm-settings'); ?>" class="btn">
+                        <span class="iconify" data-icon="material-symbols:settings"></span>
+                        <span>CRM Settings</span>
+                    </a>
+                </li>
+
                 <li>
                     <a href="<?php echo wp_logout_url(); ?>" class="btn">
                         <span class="iconify" data-icon="fluent:sign-out-24-regular" data-inline="false"></span>

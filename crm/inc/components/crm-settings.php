@@ -9,7 +9,7 @@
         <li class="tabs-btn">
             <span class="iconify" data-icon="material-symbols-light:list-alt-outline-rounded"
                 data-inline="false"></span>
-            <span>Types</span>
+            <span>Stages</span>
         </li>
 
     </ul>
