@@ -1,0 +1,42 @@
+.add-new {
+  position: relative;
+  z-index: 12;
+}
+
+.crm_page_quick-new-contacts-type {
+  background-color: transparent !important;
+  #wpadminbar {
+    display: none;
+  }
+  #wpbody,
+  #wpbody-content,
+  #wpcontent {
+    padding: 0 !important;
+  }
+
+  .form-category h1 {
+    font-size: 1rem;
+  }
+
+  .fields .field {
+    margin-bottom: 6px;
+
+    label {
+      display: block;
+    }
+  }
+}
+
+#crm-table {
+  .modal-button {
+    border: solid 1px;
+    margin: 0;
+    margin-left: 5px;
+    width: 12px;
+    display: inline-grid;
+    place-content: center;
+    text-decoration: none;
+    border-radius: 4px;
+    height: auto;
+  }
+}

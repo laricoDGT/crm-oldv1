@@ -107,107 +107,109 @@ function display_contact_form_fields($contact = null) {
                 echo "<option value='{$contact_type->contact_type_name}' $selected>{$contact_type->contact_type_name}</option>";
             }
             echo '</select>';
-        }
-        elseif ($key === 'note') {
-            echo '<textarea name="' . $key . '" ' . $required . '>' . $value . '</textarea>';
-        } elseif ($key === 'category') {
-            $categories = get_categories_from_database();
-            // echo '<select name="' . $key . '[]" ' . $required . ' multiple>';
-            // foreach ($categories as $category) {
-            //     $selected = in_array($category->category_name, explode(',', $value)) ? 'selected' : '';
-            //     echo "<option value='{$category->category_name}' $selected>{$category->category_name}</option>";
-            // }
-            // echo '</select>';
+            // echo '<a class="button add-new openModal" href="' . admin_url("admin.php?page=quick-new-contacts-type") . '">Add +</a>';
+}
+elseif ($key === 'note') {
+echo '<textarea name="' . $key . '" ' . $required . '>' . $value . '</textarea>';
+} elseif ($key === 'category') {
+$categories = get_categories_from_database();
+// echo '<select name="' . $key . '[]" ' . $required . ' multiple>';
+    // foreach ($categories as $category) {
+    // $selected = in_array($category->category_name, explode(',', $value)) ? 'selected' : '';
+    // echo "<option value='{$category->category_name}' $selected>{$category->category_name}</option>";
+    // }
+    // echo '</select>';
 
-            echo '<ul class="dropdown"><li><a href="#">Select Category</a>';
-            echo '<ul class="submenu">';
+echo '<ul class="dropdown">
+    <li><a href="#">Select Category</a>';
+        echo '<ul class="submenu">';
             foreach ($categories as $category) {
-                $checked = in_array($category->category_name, explode(',', $value)) ? 'checked' : '';
-                echo "<li><label><input type='checkbox' name='{$key}[]' value='{$category->category_name}' $checked> {$category->category_name}</label></li>";
+            $checked = in_array($category->category_name, explode(',', $value)) ? 'checked' : '';
+            echo "<li><label><input type='checkbox' name='{$key}[]' value='{$category->category_name}' $checked>
+                    {$category->category_name}</label></li>";
             }
             echo '</ul>';
-            echo '</li></ul>';
-        }else {
-            
-            echo '<input type="' . ($key === 'email_1' ? 'email' : ($key === 'since' ? 'date' : ($key === 'dob' ? 'date' : 'text'))) . '" name="' . $key . '" value="' . $value . '" ' . $required . '>';
+        echo '</li>
+</ul>';
+}else {
 
-        }
+echo '<input
+    type="' . ($key === 'email_1' ? 'email' : ($key === 'since' ? 'date' : ($key === 'dob' ? 'date' : 'text'))) . '"
+    name="' . $key . '" value="' . $value . '" ' . $required . '>';
 
-        echo '<br>';
-        echo '</div>';
-    }
-    echo '</div>';
+}
+
+echo '<br>';
+echo '</div>';
+}
+echo '</div>';
 }
 
 
 function get_contact_form_fields() {
-    return [
-        
-        'type' => 'Stage',
-        'first_name' => 'First Name',
-        'last_name' => 'Last Name',
-        'gender' => 'Gender',
-        'title' => 'Title', 
-        'service' => 'Service',
-        'company' => 'Company',
-        'city' => 'City',
-        'state' => 'State',
-        'zip' => 'Zip',
-        'phone_work' => 'Phone Work',
-        'phone_mobile' => 'Phone Mobile',
-        'email_1' => 'Email',
-        'web' => 'Web', 
-        'since' => 'Since', 
-        'dob' => 'DOB',
-        'bill' => 'Bill',
-        'category' => 'Category',
-        'slogan' => 'Slogan',
-        'note' => 'Note',
-        'image' => 'Image', 
-    ];
+return [
+
+'type' => 'Stage',
+'first_name' => 'First Name',
+'last_name' => 'Last Name',
+'gender' => 'Gender',
+'title' => 'Title',
+'service' => 'Service',
+'company' => 'Company',
+'city' => 'City',
+'state' => 'State',
+'zip' => 'Zip',
+'phone_work' => 'Phone Work',
+'phone_mobile' => 'Phone Mobile',
+'email_1' => 'Email',
+'web' => 'Web',
+'since' => 'Since',
+'dob' => 'DOB',
+'bill' => 'Bill',
+'category' => 'Category',
+'slogan' => 'Slogan',
+'note' => 'Note',
+'image' => 'Image',
+];
 }
 
 function sanitize_input($input) {
-    return sanitize_text_field($input);
+return sanitize_text_field($input);
 }
 
 function display_message($type, $message) {
-    echo "<div class='$type'><p>$message</p></div>";
+echo "<div class='$type'>
+    <p>$message</p>
+</div>";
 }
 
-function redirect_to_crm_overview() {
-    echo '<script>
-        setTimeout(function() {
-            window.location.href = "' . admin_url('admin.php?page=crm') . '";
-        }, 1000);
-    </script>';
-}
+
 
 
 // wp_enqueue_script('jquery');
 wp_enqueue_media();
 
 echo '<script>
-    jQuery(document).ready(function($){
-      
-        $(".upload-image-btn").on("click", function(e){
-            e.preventDefault();
+jQuery(document).ready(function($) {
 
-            var button = $(this);
-            var fieldName = button.data("target");
- 
-            var mediaUploader = wp.media({
-                frame: "select",
-                multiple: false,
-            });
- 
-            mediaUploader.on("select", function(){
-                var attachment = mediaUploader.state().get("selection").first().toJSON(); 
-                $("input[name=\'" + fieldName + "\']").val(attachment.url);
-            }); 
-            mediaUploader.open();
+    $(".upload-image-btn").on("click", function(e) {
+        e.preventDefault();
+
+        var button = $(this);
+        var fieldName = button.data("target");
+
+        var mediaUploader = wp.media({
+            frame: "select",
+            multiple: false,
         });
+
+        mediaUploader.on("select", function() {
+            var attachment = mediaUploader.state().get("selection").first().toJSON();
+            $("input[name=\'" + fieldName + "\']").val(attachment.url);
+        });
+        mediaUploader.open();
     });
+});
 </script>';
 
 ?>

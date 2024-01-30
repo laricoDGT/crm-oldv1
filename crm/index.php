@@ -133,6 +133,14 @@ function crm_plugin_menu() {
         'new-contacts-type',
         'new_contacts_type_page'
     );
+    add_submenu_page(
+        'crm',
+        '',
+        '',
+        'manage_options',
+        'quick-new-contacts-type',
+        'quick_new_contacts_type_page'
+    );
 
     add_submenu_page(
         'crm',
@@ -142,6 +150,14 @@ function crm_plugin_menu() {
         'edit-contacts-type',
         'edit_contacts_type_page'
     );
+    add_submenu_page(
+        'crm',
+        '',
+        '',
+        'manage_options',
+        'quick-edit-contacts-type',
+        'quick_edit_contacts_type_page'
+    );
 
     add_submenu_page(
         'crm',
@@ -150,6 +166,15 @@ function crm_plugin_menu() {
         'manage_options',
         'edit-contact',
         'edit_contact_page',
+        15
+    );
+    add_submenu_page(
+        'crm',
+        '',
+        '',
+        'manage_options',
+        'quick-edit-contact',
+        'quick_edit_contact_page',
         15
     );
 
@@ -176,6 +201,9 @@ function new_contact_page() {
 function edit_contact_page() { 
     require_once plugin_dir_path(__FILE__) . 'inc/contacts/edit.php';
 }
+function quick_edit_contact_page() { 
+    require_once plugin_dir_path(__FILE__) . 'inc/contacts/quick-edit.php';
+}
 
 function edit_contasearch_pagect_page() { 
     require_once plugin_dir_path(__FILE__) . 'inc/contacts/search.php';
@@ -190,9 +218,15 @@ function crm_contacts_type_page() {
 function new_contacts_type_page() {  
     require_once plugin_dir_path(__FILE__) . 'inc/contacts-stage/add.php';
 }
+function quick_new_contacts_type_page() {  
+    require_once plugin_dir_path(__FILE__) . 'inc/contacts-stage/quick-add.php';
+}
 
 function edit_contacts_type_page() { 
     require_once plugin_dir_path(__FILE__) . 'inc/contacts-stage/edit.php';
+}
+function quick_edit_contacts_type_page() { 
+    require_once plugin_dir_path(__FILE__) . 'inc/contacts-stage/quick-edit.php';
 }
 
 // Categories

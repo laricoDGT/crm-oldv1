@@ -47,7 +47,8 @@ if (isset($_POST['submit_delete'])) {
         <input placeholder='Enter search term' type="search" name="search_term">
         <input type="hidden" name="page" value="crm">
         <button type="submit">
-            <span class="iconify color-green" data-icon="material-symbols:search" data-inline="false"></span>
+            <span class="iconify color-green" data-icon="material-symbols:search" data-width='18'
+                data-inline="false"></span>
         </button>
     </form>
 
@@ -211,11 +212,16 @@ if (isset($_POST['submit_delete'])) {
 
                         </td>
                         <td>
-                            <a class=''
-                                href="<?php echo admin_url('admin.php?page=edit-contact&contact_id=' . $contact['id'] . '&to_type'); ?>">
-                                <?php echo esc_html($contact['type']); ?>
+                            <a href="<?php echo admin_url('admin.php?page=quick-edit-contact&contact_id=' . $contact['id'] . '&to_type'); ?>"
+                                class="openModal">
+                                <?php echo !empty($contact['type']) ? esc_html($contact['type']) : 'Add'; ?>
                             </a>
 
+
+                            <a href="<?php echo admin_url('admin.php?page=quick-new-contacts-type'); ?>"
+                                class="modal-button openModal">
+                                +
+                            </a>
                         </td>
                         <td class='no-csv'>
 
@@ -248,15 +254,17 @@ if (isset($_POST['submit_delete'])) {
                         </td>
 
                         <td>
-                            <a
-                                href="<?php echo admin_url('admin.php?page=edit-contact&contact_id=' . $contact['id'] . '&to_first_name'); ?>">
-                                <?php echo esc_html($contact['first_name']); ?>
-                            </a>
+
+
+                            <a href="<?php echo admin_url('admin.php?page=quick-edit-contact&contact_id=' . $contact['id'] . '&to_first_name'); ?>"
+                                class="openModal"> <?php echo esc_html($contact['first_name']); ?></a>
+
+
                         </td>
 
                         <td>
-                            <a
-                                href="<?php echo admin_url('admin.php?page=edit-contact&contact_id=' . $contact['id'] . '&to_last_name'); ?>">
+                            <a href="<?php echo admin_url('admin.php?page=quick-edit-contact&contact_id=' . $contact['id'] . '&to_last_name'); ?>"
+                                class="openModal">
                                 <?php echo esc_html($contact['last_name']); ?>
                             </a>
                         </td>
@@ -324,7 +332,6 @@ if (isset($_POST['submit_delete'])) {
 
 
 </div>
-
 
 
 

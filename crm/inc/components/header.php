@@ -5,6 +5,7 @@
 ?>
 
 <?php require_once plugin_dir_path(__FILE__) . '../../assets/css.php'; ?>
+<?php require_once plugin_dir_path(__FILE__) . '../../assets/js.php'; ?>
 <?php // require_once plugin_dir_path(__FILE__) . '../../assets/full-screen.php'; ?>
 
 <div class="wrap">

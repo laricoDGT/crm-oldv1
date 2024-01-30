@@ -575,15 +575,7 @@
 /* params  */
 
 
-.add-edit-contact {
 
-    &.to_type .field.type select,
-    &.to_first_name .field.first_name input,
-    &.to_last_name .field.last_name input {
-        background-color: #4fbd4e;
-        color: #fff;
-    }
-}
 
 
 
